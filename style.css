@@ -218,28 +218,31 @@ a {
 }
 
 .lang-btn {
-  background: none;
-  border: 1px solid rgba(244, 240, 238, 0.28);
-  color: rgba(244, 240, 238, 0.7);
-  font-size: 0.68rem;
+  background: transparent;
+  border: none;
+  color: rgba(244, 240, 238, 0.5);
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  padding: 3px 8px;
-  border-radius: 20px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 999px;
   cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s;
   font-family: inherit;
-  line-height: 1.6;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .lang-btn:hover {
-  border-color: rgba(244, 240, 238, 0.6);
   color: #F4F0EE;
+  background: rgba(244, 240, 238, 0.08);
 }
 
 .lang-btn.active {
   background: #AA7452;
-  border-color: #AA7452;
   color: #fff;
 }
 
