@@ -160,7 +160,7 @@ a {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .nav-logo {
@@ -206,8 +206,15 @@ a {
   display: flex;
   gap: 4px;
   align-items: center;
-  margin-left: 8px;
-  list-style: none;
+  /* Desktop: sits after nav-links at the far right */
+  order: 3;
+  margin-left: 20px;
+}
+
+.nav-links {
+  /* push nav-links to the right on desktop */
+  margin-left: auto;
+  order: 2;
 }
 
 .lang-btn {
@@ -1495,8 +1502,20 @@ a {
   }
 
   .lang-switcher {
-    margin: 12px 24px 4px;
-    justify-content: center;
+    /* Mobile: in the nav bar, between logo and hamburger */
+    order: 2;
+    margin-left: auto;
+    margin-right: 12px;
+  }
+
+  .nav-toggle {
+    order: 3;
+    margin-left: 0;
+  }
+
+  .nav-links {
+    order: 4;
+    margin-left: 0;
   }
 
   /* Mobile hero */
