@@ -114,7 +114,9 @@ track.addEventListener('touchend', function (e) {
 document.getElementById('contactForm').addEventListener('submit', function (e) {
   e.preventDefault();
   var btn = this.querySelector('button[type="submit"]');
-  btn.textContent = 'Odesláno ✓';
+  var lang = document.documentElement.lang || 'cs';
+  var sentMsg = { cs: 'Odesláno ✓', uk: 'Надіслано ✓', en: 'Sent ✓' };
+  btn.textContent = sentMsg[lang] || sentMsg.cs;
   btn.disabled = true;
   btn.style.backgroundColor = '#5a6a72';
 });

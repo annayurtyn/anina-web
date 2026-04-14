@@ -201,6 +201,41 @@ a {
   border-color: #AA7452;
 }
 
+/* ─── Language switcher ─── */
+.lang-switcher {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: 8px;
+  list-style: none;
+}
+
+.lang-btn {
+  background: none;
+  border: 1px solid rgba(244, 240, 238, 0.28);
+  color: rgba(244, 240, 238, 0.7);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+  font-family: inherit;
+  line-height: 1.6;
+}
+
+.lang-btn:hover {
+  border-color: rgba(244, 240, 238, 0.6);
+  color: #F4F0EE;
+}
+
+.lang-btn.active {
+  background: #AA7452;
+  border-color: #AA7452;
+  color: #fff;
+}
+
 /* Hamburger */
 .nav-toggle {
   display: none;
@@ -1457,6 +1492,11 @@ a {
     padding: 12px 24px;
     text-align: center;
     border: 1px solid rgba(170,116,82,0.5);
+  }
+
+  .lang-switcher {
+    margin: 12px 24px 4px;
+    justify-content: center;
   }
 
   /* Mobile hero */

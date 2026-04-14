@@ -16,11 +16,16 @@
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#o-mne">O mně</a></li>
-        <li><a href="#reference">Reference</a></li>
-        <li><a href="#cenik">Ceník</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
-        <li><a href="#kontakt" class="nav-cta">Začít trénovat</a></li>
+        <li><a href="#o-mne" data-i18n="nav.about">O mně</a></li>
+        <li><a href="#reference" data-i18n="nav.references">Reference</a></li>
+        <li><a href="#cenik" data-i18n="nav.pricing">Ceník</a></li>
+        <li><a href="#kontakt" data-i18n="nav.contact">Kontakt</a></li>
+        <li><a href="#kontakt" class="nav-cta" data-i18n="nav.cta">Začít trénovat</a></li>
+        <li class="lang-switcher">
+          <button class="lang-btn active" data-lang="cs">CS</button>
+          <button class="lang-btn" data-lang="uk">UK</button>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </li>
       </ul>
     </div>
   </nav>
@@ -32,29 +37,29 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <p class="hero-label"><span class="hero-dash">——</span> Komplexní osobní trenérka · Brno</p>
-      <h1 class="hero-name">
+      <p class="hero-label"><span class="hero-dash">——</span> <span data-i18n="hero.label">Komplexní osobní trenérka · Brno</span></p>
+      <h1 class="hero-name" data-i18n="hero.h1">
         POHYB,<br/>
         KTERÝ TĚ<br/>
         <em>ZMĚNÍ</em>
       </h1>
       <div class="hero-actions">
-        <a href="#kontakt" class="btn hero-btn-primary">Chci začít trénovat —</a>
-        <a href="#o-mne" class="hero-btn-secondary">Více o mně ↓</a>
+        <a href="#kontakt" class="btn hero-btn-primary" data-i18n="hero.btn1">Chci začít trénovat —</a>
+        <a href="#o-mne" class="hero-btn-secondary" data-i18n="hero.btn2">Více o mně ↓</a>
       </div>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <span class="stat-num">50+</span>
-        <span class="stat-label">Klientů</span>
+        <span class="stat-num" data-i18n="hero.stat1num">50+</span>
+        <span class="stat-label" data-i18n="hero.stat1label">Klientů</span>
       </div>
       <div class="hero-stat">
-        <span class="stat-num">6 let</span>
-        <span class="stat-label">Fyzioterapie</span>
+        <span class="stat-num" data-i18n="hero.stat2num">6 let</span>
+        <span class="stat-label" data-i18n="hero.stat2label">Fyzioterapie</span>
       </div>
       <div class="hero-stat">
-        <span class="stat-num">100%</span>
-        <span class="stat-label">Individuální přístup</span>
+        <span class="stat-num" data-i18n="hero.stat3num">100%</span>
+        <span class="stat-label" data-i18n="hero.stat3label">Individuální přístup</span>
       </div>
     </div>
   </section>
@@ -65,33 +70,33 @@
       <img src="img/aninka-profile.jpg" alt="Aninka – osobní trenérka" />
     </div>
     <div class="about-content">
-      <span class="about-label">— O mně</span>
-      <h2 class="about-heading">
+      <span class="about-label" data-i18n="about.label">— O mně</span>
+      <h2 class="about-heading" data-i18n="about.h2">
         POHYB<br />
         <em>PODLOŽENÝ</em><br />
         VĚDOU
       </h2>
       <div class="about-divider"></div>
-      <p>
+      <p data-i18n="about.p1">
         Nejsem trenérka, která tě postaví ke stroji a bude počítat opakování.
         Každému klientovi se věnuji na sto procent a všímám si i těch nejmenších
         detailů v pohybu a dysbalancích těla.
       </p>
-      <p>
+      <p data-i18n="about.p2">
         Vystudovala jsem medicínu, pracovala jako zdravotní sestra a 6 let
         působila jako fyzioterapeutka a trenérka na Ukrajině. Nyní žiji v Brně
         a pracuji jako komplexní osobní trenérka — kombinující medicínské znalosti,
         fyzioterapii a silový trénink.
       </p>
-      <a href="#kontakt" class="btn-outline">Kontaktovat —</a>
+      <a href="#kontakt" class="btn-outline" data-i18n="about.cta">Kontaktovat —</a>
     </div>
   </section>
 
   <!-- REFERENCE -->
   <section class="testimonials" id="reference">
     <div class="container">
-      <span class="testimonials-label">— Reference</span>
-      <h2 class="testimonials-heading">CO ŘÍKAJÍ<br/><em>KLIENTI</em></h2>
+      <span class="testimonials-label" data-i18n="testimonials.label">— Reference</span>
+      <h2 class="testimonials-heading" data-i18n="testimonials.h2">CO ŘÍKAJÍ<br/><em>KLIENTI</em></h2>
     </div>
 
     <div class="carousel-wrap">
@@ -102,8 +107,8 @@
             <img src="img/client-jana.jpg" alt="Jana K." />
           </div>
           <div class="slide-text">
-            <p class="slide-quote">"Aninka mi změnila pohled na cvičení úplně. Poprvé v životě cvičím bez bolesti zad."</p>
-            <p class="slide-name">Jana K.</p>
+            <p class="slide-quote" data-i18n="testimonials.s0q">„Aninka mi změnila pohled na cvičení úplně. Poprvé v životě cvičím bez bolesti zad."</p>
+            <p class="slide-name" data-i18n="testimonials.s0n">Jana K.</p>
           </div>
         </div>
 
@@ -112,8 +117,8 @@
             <img src="img/client-tomas.jpg" alt="Tomáš M." />
           </div>
           <div class="slide-text">
-            <p class="slide-quote">"Za 2 měsíce jsem dosáhl výsledků, o kterých jsem předtím jen snil."</p>
-            <p class="slide-name">Tomáš M.</p>
+            <p class="slide-quote" data-i18n="testimonials.s1q">„Za 2 měsíce jsem dosáhl výsledků, o kterých jsem předtím jen snil."</p>
+            <p class="slide-name" data-i18n="testimonials.s1n">Tomáš M.</p>
           </div>
         </div>
 
@@ -122,8 +127,8 @@
             <img src="img/client-martin.jpg" alt="Martin S." />
           </div>
           <div class="slide-text">
-            <p class="slide-quote">"Přístup na sto procent, vždy vidí co ostatní přehlédnou."</p>
-            <p class="slide-name">Martin S.</p>
+            <p class="slide-quote" data-i18n="testimonials.s2q">„Přístup na sto procent, vždy vidí co ostatní přehlédnou."</p>
+            <p class="slide-name" data-i18n="testimonials.s2n">Martin S.</p>
           </div>
         </div>
 
@@ -132,8 +137,8 @@
             <img src="img/client-4.jpg" alt="Lucie V." />
           </div>
           <div class="slide-text">
-            <p class="slide-quote">"Konečně trenérka, která skutečně rozumí pohybu. Moje záda jsou poprvé za roky bez problémů."</p>
-            <p class="slide-name">Lucie V.</p>
+            <p class="slide-quote" data-i18n="testimonials.s3q">„Konečně trenérka, která skutečně rozumí pohybu. Moje záda jsou poprvé za roky bez problémů."</p>
+            <p class="slide-name" data-i18n="testimonials.s3n">Lucie V.</p>
           </div>
         </div>
 
@@ -150,7 +155,6 @@
   <section class="community" id="komunita">
     <div class="container community-grid">
 
-      <!-- Levá strana — screenshoty -->
       <div class="community-screens">
         <div class="cs-card cs-card--1">
           <img src="img/community-1.jpg" alt="Komunita — recepty" />
@@ -163,25 +167,24 @@
         </div>
       </div>
 
-      <!-- Pravá strana — popis -->
       <div class="community-text">
-        <span class="community-label">— Moje komunita</span>
-        <h2 class="community-heading">VÍC NEŽ JEN<br/><em>TRÉNINK</em></h2>
-        <p class="community-desc">
+        <span class="community-label" data-i18n="community.label">— Moje komunita</span>
+        <h2 class="community-heading" data-i18n="community.h2">VÍC NEŽ JEN<br/><em>TRÉNINK</em></h2>
+        <p class="community-desc" data-i18n="community.p1">
           Vedu komunitu, kde se trénink prolíná s každodenním životem. Nejde jen o to, co děláš v posilovně — ale o to, jak spíš, jak jíš, jak se hýbeš i ve volných dnech.
         </p>
-        <p class="community-desc">
+        <p class="community-desc" data-i18n="community.p2">
           Každý týden tam přidávám svoje myšlenky, recepty, speciální cviky, ranní rozcvičky, strečinkové série a tipy, které si vyzkouším sama na sobě. Žádné reklamy, žádný filtr — jen obsah, který skutečně funguje.
         </p>
         <div class="community-tags">
-          <span class="ctag">🥗 Recepty</span>
-          <span class="ctag">💡 Tipy &amp; triky</span>
-          <span class="ctag">🏋️ Speciální cviky</span>
-          <span class="ctag">🧘 Mobilita</span>
-          <span class="ctag">🌅 Ranní rozcvičky</span>
-          <span class="ctag">🤸 Stretching</span>
+          <span class="ctag" data-i18n="community.tag0">🥗 Recepty</span>
+          <span class="ctag" data-i18n="community.tag1">💡 Tipy &amp; triky</span>
+          <span class="ctag" data-i18n="community.tag2">🏋️ Speciální cviky</span>
+          <span class="ctag" data-i18n="community.tag3">🧘 Mobilita</span>
+          <span class="ctag" data-i18n="community.tag4">🌅 Ranní rozcvičky</span>
+          <span class="ctag" data-i18n="community.tag5">🤸 Stretching</span>
         </div>
-        <a href="https://t.me/+380982490862" target="_blank" rel="noopener" class="btn-outline btn-outline--light">
+        <a href="https://t.me/+380982490862" target="_blank" rel="noopener" class="btn-outline btn-outline--light" data-i18n="community.cta">
           Připojit se ke komunitě →
         </a>
       </div>
@@ -192,16 +195,16 @@
   <!-- PROČ SPOLUPRACOVAT -->
   <section class="why" id="proc">
     <div class="container">
-      <span class="why-label">— Proč spolupracovat se mnou</span>
-      <h2 class="why-heading">MOŽNÁ JE PROBLÉM<br/><em>JINDE, NEŽ</em><br/>SI MYSLÍŠ</h2>
+      <span class="why-label" data-i18n="why.label">— Proč spolupracovat se mnou</span>
+      <h2 class="why-heading" data-i18n="why.h2">MOŽNÁ JE PROBLÉM<br/><em>JINDE, NEŽ</em><br/>SI MYSLÍŠ</h2>
 
       <div class="timeline">
 
         <div class="tl-item tl-left">
           <div class="tl-content">
             <span class="tl-num">01</span>
-            <h3 class="tl-title">Nemůžeš dlouhodobě zhubnout?</h3>
-            <p class="tl-desc">Problém nebývá v nedostatku vůle — bývá v nastavení tréninku a výživy, které spolu nekomunikují. Nastavím ti obojí tak, aby výsledky přišly a vydržely.</p>
+            <h3 class="tl-title" data-i18n="why.t0title">Nemůžeš dlouhodobě zhubnout?</h3>
+            <p class="tl-desc" data-i18n="why.t0desc">Problém nebývá v nedostatku vůle — bývá v nastavení tréninku a výživy, které spolu nekomunikují. Nastavím ti obojí tak, aby výsledky přišly a vydržely.</p>
           </div>
           <div class="tl-node"><div class="tl-dot"></div></div>
           <div class="tl-spacer"></div>
@@ -212,16 +215,16 @@
           <div class="tl-node"><div class="tl-dot"></div></div>
           <div class="tl-content">
             <span class="tl-num">02</span>
-            <h3 class="tl-title">Bolí tě ramena nebo záda?</h3>
-            <p class="tl-desc">Bolest je signál, ne nepřítel. Se svým fyzioterapeutickým základem vím, kde hledat příčinu — a jak ji odstranit pohybem, ne pilulkami.</p>
+            <h3 class="tl-title" data-i18n="why.t1title">Bolí tě ramena nebo záda?</h3>
+            <p class="tl-desc" data-i18n="why.t1desc">Bolest je signál, ne nepřítel. Se svým fyzioterapeutickým základem vím, kde hledat příčinu — a jak ji odstranit pohybem, ne pilulkami.</p>
           </div>
         </div>
 
         <div class="tl-item tl-left">
           <div class="tl-content">
             <span class="tl-num">03</span>
-            <h3 class="tl-title">Chceš nabírat svaly, ale nejde to?</h3>
-            <p class="tl-desc">Bez správné techniky a periodizace tréninku tělo roste pomalu nebo vůbec. Sestavím ti plán, který funguje — a průběžně ho ladím podle toho, jak reaguješ.</p>
+            <h3 class="tl-title" data-i18n="why.t2title">Chceš nabírat svaly, ale nejde to?</h3>
+            <p class="tl-desc" data-i18n="why.t2desc">Bez správné techniky a periodizace tréninku tělo roste pomalu nebo vůbec. Sestavím ti plán, který funguje — a průběžně ho ladím podle toho, jak reaguješ.</p>
           </div>
           <div class="tl-node"><div class="tl-dot"></div></div>
           <div class="tl-spacer"></div>
@@ -232,16 +235,16 @@
           <div class="tl-node"><div class="tl-dot"></div></div>
           <div class="tl-content">
             <span class="tl-num">04</span>
-            <h3 class="tl-title">Láká tě vzpírání nebo CrossFit?</h3>
-            <p class="tl-desc">Obojí jsou technicky náročné disciplíny, kde špatný start rovná se zranění. Naučím tě základy správně — od prvního pohybu až po první výsledky.</p>
+            <h3 class="tl-title" data-i18n="why.t3title">Láká tě vzpírání nebo CrossFit?</h3>
+            <p class="tl-desc" data-i18n="why.t3desc">Obojí jsou technicky náročné disciplíny, kde špatný start rovná se zranění. Naučím tě základy správně — od prvního pohybu až po první výsledky.</p>
           </div>
         </div>
 
         <div class="tl-item tl-left">
           <div class="tl-content">
             <span class="tl-num">05</span>
-            <h3 class="tl-title">Brzdí tě staré zranění nebo dysbalance?</h3>
-            <p class="tl-desc">6 let fyzioterapie na Ukrajině mě naučilo číst tělo jinak než ostatní trenéři. Vidím, co ostatní přehlíží — a stavím trénink kolem tvých omezení, ne navzdory nim.</p>
+            <h3 class="tl-title" data-i18n="why.t4title">Brzdí tě staré zranění nebo dysbalance?</h3>
+            <p class="tl-desc" data-i18n="why.t4desc">6 let fyzioterapie na Ukrajině mě naučilo číst tělo jinak než ostatní trenéři. Vidím, co ostatní přehlíží — a stavím trénink kolem tvých omezení, ne navzdory nim.</p>
           </div>
           <div class="tl-node"><div class="tl-dot"></div></div>
           <div class="tl-spacer"></div>
@@ -257,9 +260,9 @@
       <div class="tz-grid">
 
         <div class="tz-text">
-          <span class="tz-label">— Jak to funguje</span>
-          <h2 class="tz-heading">VŠE NA JEDNOM<br/><em>MÍSTĚ</em></h2>
-          <p class="tz-desc">
+          <span class="tz-label" data-i18n="tz.label">— Jak to funguje</span>
+          <h2 class="tz-heading" data-i18n="tz.h2">VŠE NA JEDNOM<br/><em>MÍSTĚ</em></h2>
+          <p class="tz-desc" data-i18n="tz.desc">
             Pracujeme v aplikaci <strong>Trainerize</strong> — žádný zmatek, žádné ztracené zprávy, žádný poznámkový blok. Tvůj tréninkový plán, pokrok i komunikace jsou vždy přehledně na jednom místě.
           </p>
 
@@ -267,29 +270,29 @@
             <div class="tz-feature">
               <span class="tz-icon">📱</span>
               <div>
-                <h4>Přehledná aplikace</h4>
-                <p>Vše máš v mobilu — plán, cviky, historii tréninků i zprávy ode mě.</p>
+                <h4 data-i18n="tz.f0title">Přehledná aplikace</h4>
+                <p data-i18n="tz.f0desc">Vše máš v mobilu — plán, cviky, historii tréninků i zprávy ode mě.</p>
               </div>
             </div>
             <div class="tz-feature">
               <span class="tz-icon">🎬</span>
               <div>
-                <h4>Ukázky každého cviku</h4>
-                <p>U každého cviku najdeš video ukázku, takže víš přesně, o co jde — i když cvičíš sám.</p>
+                <h4 data-i18n="tz.f1title">Ukázky každého cviku</h4>
+                <p data-i18n="tz.f1desc">U každého cviku najdeš video ukázku, takže víš přesně, o co jde — i když cvičíš sám.</p>
               </div>
             </div>
             <div class="tz-feature">
               <span class="tz-icon">📊</span>
               <div>
-                <h4>Sledování pokroku</h4>
-                <p>Vidíme oba jak se zlepšuješ — váhy, počty opakování, body composition.</p>
+                <h4 data-i18n="tz.f2title">Sledování pokroku</h4>
+                <p data-i18n="tz.f2desc">Vidíme oba jak se zlepšuješ — váhy, počty opakování, body composition.</p>
               </div>
             </div>
             <div class="tz-feature">
               <span class="tz-icon">✨</span>
               <div>
-                <h4>Spousta dalších výhod</h4>
-                <p>Výzvy, nutriční tracking, přímá komunikace — vše bez přepínání mezi aplikacemi.</p>
+                <h4 data-i18n="tz.f3title">Spousta dalších výhod</h4>
+                <p data-i18n="tz.f3desc">Výzvy, nutriční tracking, přímá komunikace — vše bez přepínání mezi aplikacemi.</p>
               </div>
             </div>
           </div>
@@ -312,62 +315,60 @@
   <section class="pricing" id="cenik">
     <div class="container">
 
-      <!-- Individuální trénink -->
       <div class="pricing-block">
-        <span class="pricing-label">— Služby &amp; ceník</span>
-        <h2 class="pricing-heading">INDIVIDUÁLNÍ<br/><em>TRÉNINK</em></h2>
+        <span class="pricing-label" data-i18n="pricing.label1">— Služby &amp; ceník</span>
+        <h2 class="pricing-heading" data-i18n="pricing.h1">INDIVIDUÁLNÍ<br/><em>TRÉNINK</em></h2>
         <div class="pc-grid">
           <div class="pc-card">
             <span class="pc-num">01</span>
-            <h3 class="pc-title">Jednorázová lekce</h3>
-            <p class="pc-desc">60 minut osobního tréninku</p>
-            <div class="pc-price">650 Kč</div>
+            <h3 class="pc-title" data-i18n="pricing.p0title">Jednorázová lekce</h3>
+            <p class="pc-desc" data-i18n="pricing.p0desc">60 minut osobního tréninku</p>
+            <div class="pc-price" data-i18n="pricing.p0price">650 Kč</div>
           </div>
           <div class="pc-card pc-featured">
             <span class="pc-num">02</span>
-            <h3 class="pc-title">Balíček 10 lekcí</h3>
-            <p class="pc-desc">630 Kč / lekce<br/><span class="pc-save">ušetříš 200 Kč</span></p>
-            <div class="pc-price">6 300 Kč</div>
+            <h3 class="pc-title" data-i18n="pricing.p1title">Balíček 10 lekcí</h3>
+            <p class="pc-desc"><span data-i18n="pricing.p1desc">630 Kč / lekce</span><br/><span class="pc-save" data-i18n="pricing.p1save">ušetříš 200 Kč</span></p>
+            <div class="pc-price" data-i18n="pricing.p1price">6 300 Kč</div>
           </div>
           <div class="pc-card">
             <span class="pc-num">03</span>
-            <h3 class="pc-title">Balíček 20 lekcí</h3>
-            <p class="pc-desc">600 Kč / lekce<br/><span class="pc-save">ušetříš 1 000 Kč</span></p>
-            <div class="pc-price">12 000 Kč</div>
+            <h3 class="pc-title" data-i18n="pricing.p2title">Balíček 20 lekcí</h3>
+            <p class="pc-desc"><span data-i18n="pricing.p2desc">600 Kč / lekce</span><br/><span class="pc-save" data-i18n="pricing.p2save">ušetříš 1 000 Kč</span></p>
+            <div class="pc-price" data-i18n="pricing.p2price">12 000 Kč</div>
           </div>
         </div>
       </div>
 
-      <!-- Měsíční spolupráce -->
       <div class="pricing-block">
-        <span class="pricing-label">— Měsíční spolupráce</span>
-        <h2 class="pricing-heading">KOMPLETNÍ<br/><em>PÉČE</em></h2>
+        <span class="pricing-label" data-i18n="pricing.label2">— Měsíční spolupráce</span>
+        <h2 class="pricing-heading" data-i18n="pricing.h2">KOMPLETNÍ<br/><em>PÉČE</em></h2>
         <ul class="features-list">
-          <li>Analýza těla &amp; pohybových vzorců na 1. tréninku</li>
-          <li>Tréninkový plán šitý na míru, průběžně laděný</li>
-          <li>Mobilita &amp; prevence zranění jako součást každého tréninku</li>
-          <li>Konzistentní komunikace přes WhatsApp</li>
-          <li>Úvodní konzultace</li>
-          <li>Soukromá WhatsApp skupina s tipy &amp; triky — <strong>ZDARMA</strong></li>
+          <li data-i18n="pricing.f0">Analýza těla &amp; pohybových vzorců na 1. tréninku</li>
+          <li data-i18n="pricing.f1">Tréninkový plán šitý na míru, průběžně laděný</li>
+          <li data-i18n="pricing.f2">Mobilita &amp; prevence zranění jako součást každého tréninku</li>
+          <li data-i18n="pricing.f3">Konzistentní komunikace přes WhatsApp</li>
+          <li data-i18n="pricing.f4">Úvodní konzultace</li>
+          <li data-i18n="pricing.f5">Soukromá WhatsApp skupina s tipy &amp; triky — <strong>ZDARMA</strong></li>
         </ul>
         <div class="pc-grid">
           <div class="pc-card">
             <span class="pc-num">A</span>
-            <h3 class="pc-title">2 tréninky týdně</h3>
-            <p class="pc-desc">8 tréninků / měsíc<br/>8 × 650 Kč + paušál 1 500 Kč</p>
-            <div class="pc-price">6 700 Kč <span class="pc-per">/&nbsp;měsíc</span></div>
+            <h3 class="pc-title" data-i18n="pricing.m0title">2 tréninky týdně</h3>
+            <p class="pc-desc" data-i18n="pricing.m0desc">8 tréninků / měsíc<br/>8 × 650 Kč + paušál 1 500 Kč</p>
+            <div class="pc-price" data-i18n="pricing.m0price">6 700 Kč <span class="pc-per">/&nbsp;měsíc</span></div>
           </div>
           <div class="pc-card pc-featured">
             <span class="pc-num">B</span>
-            <h3 class="pc-title">3 tréninky týdně</h3>
-            <p class="pc-desc">12 tréninků / měsíc<br/>12 × 650 Kč + paušál 1 500 Kč</p>
-            <div class="pc-price">9 300 Kč <span class="pc-per">/&nbsp;měsíc</span></div>
+            <h3 class="pc-title" data-i18n="pricing.m1title">3 tréninky týdně</h3>
+            <p class="pc-desc" data-i18n="pricing.m1desc">12 tréninků / měsíc<br/>12 × 650 Kč + paušál 1 500 Kč</p>
+            <div class="pc-price" data-i18n="pricing.m1price">9 300 Kč <span class="pc-per">/&nbsp;měsíc</span></div>
           </div>
           <div class="pc-card">
             <span class="pc-num">+</span>
-            <h3 class="pc-title">Výživový plán</h3>
-            <p class="pc-desc">Jídelní plán, nákupní seznam,<br/>kalorické konzultace</p>
-            <div class="pc-price">1 500 Kč <span class="pc-per">jednorázově</span></div>
+            <h3 class="pc-title" data-i18n="pricing.m2title">Výživový plán</h3>
+            <p class="pc-desc" data-i18n="pricing.m2desc">Jídelní plán, nákupní seznam,<br/>kalorické konzultace</p>
+            <div class="pc-price" data-i18n="pricing.m2price">1 500 Kč <span class="pc-per">jednorázově</span></div>
           </div>
         </div>
       </div>
@@ -380,24 +381,22 @@
     <div class="container">
       <div class="contact-grid">
 
-        <!-- Formulář -->
         <div class="contact-left">
-          <span class="contact-label">— Kontakt</span>
-          <h2 class="contact-heading">JDEME<br/><em>DO TOHO?</em></h2>
-          <p class="contact-sub">Napiš mi a domluvíme první trénink.</p>
+          <span class="contact-label" data-i18n="contact.label">— Kontakt</span>
+          <h2 class="contact-heading" data-i18n="contact.h2">JDEME<br/><em>DO TOHO?</em></h2>
+          <p class="contact-sub" data-i18n="contact.sub">Napiš mi a domluvíme první trénink.</p>
           <form class="contact-form" id="contactForm">
             <div class="form-row">
-              <input type="text" name="name" placeholder="Jméno" required />
-              <input type="email" name="email" placeholder="E-mail" required />
+              <input type="text" name="name" data-i18n-ph="contact.phName" placeholder="Jméno" required />
+              <input type="email" name="email" data-i18n-ph="contact.phEmail" placeholder="E-mail" required />
             </div>
-            <textarea name="message" rows="4" placeholder="Napiš mi něco o sobě a svých cílech..."></textarea>
-            <button type="submit" class="btn">Odeslat zprávu</button>
+            <textarea name="message" rows="4" data-i18n-ph="contact.phMsg" placeholder="Napiš mi něco o sobě a svých cílech..."></textarea>
+            <button type="submit" class="btn" data-i18n="contact.submit">Odeslat zprávu</button>
           </form>
         </div>
 
-        <!-- Přímý kontakt -->
         <div class="contact-right">
-          <p class="contact-or">nebo napiš přímo</p>
+          <p class="contact-or" data-i18n="contact.or">nebo napiš přímo</p>
 
           <a href="https://wa.me/380982490862" target="_blank" rel="noopener" class="contact-channel wa">
             <span class="channel-icon">
@@ -432,9 +431,10 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>© 2025 Anna Yurtyn · Osobní trenérka · Brno</p>
+    <p data-i18n="footer">© 2025 Anna Yurtyn · Osobní trenérka · Brno</p>
   </footer>
 
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
