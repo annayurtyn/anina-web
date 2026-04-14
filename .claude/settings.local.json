@@ -1,0 +1,30 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx --version)",
+      "Bash(npx serve:*)",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(cp style.css style.css.bak)",
+      "Bash(sed -i '' 's/#334047/#908B92/g' style.css)",
+      "Bash(sed -i '' 's/#2a343a/#6e6872/g' style.css)",
+      "Bash(sed -i '' 's/#A39482/#0791B1/g' style.css)",
+      "Bash(sed -i '' 's/#a39482/#0791B1/g' style.css)",
+      "Bash(sed -i '' 's/rgba\\(51, 64, 71,/rgba\\(144, 139, 146,/g' style.css)",
+      "Bash(sed -i '' 's/rgba\\(51,64,71,/rgba\\(144,139,146,/g' style.css)",
+      "Bash(sed -i '' 's/rgba\\(163,148,130,/rgba\\(7,145,177,/g' style.css)",
+      "Bash(sed -i '' 's/rgba\\(244,244,244,/rgba\\(227,245,249,/g' style.css)",
+      "Bash(sed -i '' 's/#334047/#908B92/g' index.html)",
+      "Bash(sed -i '' 's/#A39482/#0791B1/g' index.html)",
+      "Bash(sed -i '' 's/#D1CCBD/#CBE2E7/g' index.html)",
+      "Bash(sed -i '' 's/#F4F4F4/#E3F5F9/g' index.html)",
+      "Bash(git --version)",
+      "Read(//opt/homebrew/bin/**)",
+      "Read(//usr/local/bin/**)",
+      "Bash(brew install:*)",
+      "Bash(gh auth:*)",
+      "Bash(jobs -l)"
+    ]
+  }
+}
