@@ -1378,11 +1378,26 @@ a {
 @media (max-width: 900px) {
   .tz-grid {
     grid-template-columns: 1fr;
-    gap: 56px;
+    gap: 40px;
   }
 
   .tz-visual {
-    height: 360px;
+    height: 300px;
+    max-width: 320px;
+    margin: 0 auto;
+    overflow: visible;
+  }
+
+  .tz-phone--back {
+    width: 140px;
+    top: 14px;
+    right: 14px;
+  }
+
+  .tz-phone--front {
+    width: 155px;
+    bottom: 0;
+    left: 20px;
   }
 
   .community-grid {
