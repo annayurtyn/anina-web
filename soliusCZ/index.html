@@ -1,0 +1,1968 @@
+<meta charset="utf-8">
+<title>SOLIUS · Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #00091E;
+    --bg-2: #050F2A;
+    --bg-3: #0A1738;
+    --bg-card: #071333;
+    --ink: #EAF0FF;
+    --ink-dim: #9098BE;
+    --ink-mute: #5A6494;
+    --blue: #555DFF;
+    --blue-2: #7B83FF;
+    --blue-soft: rgba(85, 93, 255, 0.12);
+    --blue-edge: rgba(85, 93, 255, 0.35);
+    --red: #FF5558;
+    --red-soft: rgba(255, 85, 88, 0.14);
+    --red-edge: rgba(255, 85, 88, 0.4);
+    --green: #38E0A1;
+    --green-soft: rgba(56, 224, 161, 0.12);
+    --green-edge: rgba(56, 224, 161, 0.4);
+    --line: rgba(255,255,255,0.08);
+    --line-2: rgba(255,255,255,0.04);
+    --radius: 18px;
+    --radius-sm: 12px;
+  }
+
+  html, body { margin: 0; padding: 0; background: #05070F; }
+  body {
+    font-family: 'Barlow', system-ui, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  .doc {
+    display: flex; flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    padding: 32px 16px 96px;
+  }
+
+  .page {
+    width: 860px;
+    background: var(--bg);
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+    border-radius: 22px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+  }
+
+  .page::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(85,93,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(85,93,255,0.04) 1px, transparent 1px);
+    background-size: 44px 44px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse at 80% 0%, black 0%, transparent 65%);
+  }
+  .page::after {
+    content: "";
+    position: absolute;
+    top: -200px; right: -180px;
+    width: 560px; height: 560px;
+    background: radial-gradient(circle, rgba(85,93,255,0.22), transparent 60%);
+    pointer-events: none;
+  }
+  .page > * { position: relative; z-index: 1; }
+
+  .corners span {
+    position: absolute;
+    width: 14px; height: 14px;
+    border: 1px solid var(--blue-edge);
+    z-index: 3;
+  }
+  .corners .tl { top: 16px; left: 16px; border-right: none; border-bottom: none; border-top-left-radius: 8px; }
+  .corners .tr { top: 16px; right: 16px; border-left: none; border-bottom: none; border-top-right-radius: 8px; }
+  .corners .bl { bottom: 16px; left: 16px; border-right: none; border-top: none; border-bottom-left-radius: 8px; }
+  .corners .br { bottom: 16px; right: 16px; border-left: none; border-top: none; border-bottom-right-radius: 8px; }
+
+  .page-tag {
+    position: absolute;
+    top: 22px; left: 50%;
+    transform: translateX(-50%);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    z-index: 3;
+  }
+
+  /* ---------- HERO / COVER ---------- */
+  .hero {
+    padding: 44px 56px 36px;
+    border-bottom: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    align-items: end;
+    gap: 24px;
+  }
+
+  .brand {
+    display: flex; align-items: center; gap: 14px;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .brand .mark {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--blue);
+    position: relative;
+    display: grid; place-items: center;
+    box-shadow: 0 6px 20px rgba(85,93,255,0.4);
+  }
+  .brand .mark svg { width: 22px; height: 22px; }
+  .brand .name {
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  .brand .brand-logo {
+    height: 35px;
+    width: auto;
+    display: block;
+  }
+
+  .kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    margin: 18px 0 8px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .kicker::after {
+    content: ""; flex: 1; height: 1px; background: var(--line);
+  }
+
+  h1.title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 74px;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 6px 0 0;
+    text-transform: uppercase;
+  }
+  h1.title .accent { color: var(--blue); }
+
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    line-height: 1.8;
+    padding-bottom: 6px;
+  }
+  .hero-meta b { color: var(--ink); font-weight: 500; }
+
+  .mascot-wrap {
+    position: relative;
+    width: 190px;
+    height: 200px;
+    align-self: end;
+    margin-bottom: -32px;
+    pointer-events: none;
+  }
+  .mascot-wrap .mascot-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    -webkit-mask-image: radial-gradient(ellipse at 50% 45%, black 32%, rgba(0,0,0,0.9) 55%, transparent 80%);
+            mask-image: radial-gradient(ellipse at 50% 45%, black 32%, rgba(0,0,0,0.9) 55%, transparent 80%);
+    filter: saturate(1.05);
+    mix-blend-mode: screen;
+  }
+  .mascot-caption {
+    position: absolute;
+    bottom: 28px; left: 0; right: 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.24em;
+    color: var(--ink-mute);
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  /* ---------- STRIP ---------- */
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid var(--line);
+  }
+  .strip .cell {
+    padding: 16px 24px;
+    border-right: 1px solid var(--line);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .strip .cell:last-child { border-right: none; }
+  .strip .cell .k {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+  .strip .cell .v {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .strip .v.red { color: var(--red); }
+  .strip .v.blue { color: var(--blue); }
+
+  /* ---------- LEGEND ---------- */
+  .legend {
+    display: flex;
+    gap: 22px;
+    padding: 14px 56px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(255,255,255,0.015);
+  }
+  .legend .item {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .legend .item .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .legend .g { background: var(--green); }
+  .legend .b { background: var(--blue); }
+  .legend .r { background: var(--red); }
+
+  /* ---------- PHASE PAGE: LEFT TIMELINE + RIGHT CARDS ---------- */
+  .phase-page {
+    padding: 40px 48px 48px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+  }
+  .tl-col {
+    position: relative;
+    padding-right: 26px;
+  }
+  /* thick vertical rail */
+  .tl-col::after {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 4px;
+    background: var(--blue);
+    border-radius: 4px;
+    opacity: 0.9;
+  }
+  .phase-page.done .tl-col::after { background: var(--green); }
+  .phase-page.token .tl-col::after { background: var(--red); }
+
+  .tl-col .num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 120px;
+    line-height: 0.8;
+    letter-spacing: -0.02em;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--blue-edge);
+    margin-bottom: 4px;
+  }
+  .phase-page.done .tl-col .num { -webkit-text-stroke-color: var(--green-edge); }
+  .phase-page.token .tl-col .num { -webkit-text-stroke-color: var(--red-edge); }
+  .tl-col .phase-date {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    margin-top: 4px;
+  }
+  .tl-col .phase-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+  .tl-col .phase-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-top: 10px;
+    line-height: 1.05;
+    color: var(--ink-dim);
+  }
+  .tl-col .badge { margin-top: 14px; margin-bottom: 24px; }
+
+  /* Timeline stems mirror the features grid row-by-row */
+  .tl-stems {
+    display: grid;
+    gap: 16px;
+    margin-top: 6px;
+  }
+  .tl-col .stem {
+    min-height: 240px;
+    position: relative;
+    padding: 20px 22px 20px 0;
+  }
+  .tl-col .stem .stxt {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    right: 22px;
+  }
+  /* connector + dot are relative to .stxt so they follow its adjusted position */
+  .tl-col .stem .stxt::after {
+    content: "";
+    position: absolute;
+    top: var(--line-y, 33px);
+    right: -46px;
+    width: 46px;
+    height: 1.5px;
+    transform: translateY(-50%);
+    background: var(--blue);
+    opacity: 0.55;
+  }
+  .phase-page.done .tl-col .stem .stxt::after { background: var(--green); }
+  .phase-page.token .tl-col .stem .stxt::after { background: var(--red); }
+  .tl-col .stem .stxt::before {
+    content: "";
+    position: absolute;
+    top: var(--line-y, 33px);
+    right: -46px;
+    width: 10px; height: 10px;
+    transform: translate(50%, -50%);
+    background: var(--bg);
+    border: 1.5px solid var(--blue);
+    border-radius: 50%;
+    box-shadow:
+      0 0 0 3px var(--bg),
+      0 0 0 5px rgba(85,93,255,0.28),
+      0 0 10px 2px rgba(85,93,255,0.55),
+      0 0 22px 4px rgba(85,93,255,0.28);
+    z-index: 2;
+  }
+  .phase-page.done .tl-col .stem .stxt::before {
+    border-color: var(--green);
+    box-shadow:
+      0 0 0 3px var(--bg),
+      0 0 0 5px rgba(56,224,161,0.28),
+      0 0 10px 2px rgba(56,224,161,0.55),
+      0 0 22px 4px rgba(56,224,161,0.28);
+  }
+  .phase-page.token .tl-col .stem .stxt::before {
+    border-color: var(--red);
+    box-shadow:
+      0 0 0 3px var(--bg),
+      0 0 0 5px rgba(255,85,88,0.28),
+      0 0 10px 2px rgba(255,85,88,0.55),
+      0 0 22px 4px rgba(255,85,88,0.28);
+  }
+  /* Remove old stem-level connector/dot */
+  .tl-col .stem::after, .tl-col .stem::before { display: none; }
+  /* connector: short clean line with arrow to the rail, aligned with feature title */
+  .tl-col .stem::after {
+    content: "";
+    position: absolute;
+    top: 52px;
+    right: -26px;
+    width: 26px;
+    height: 10px;
+    transform: translateY(-50%);
+    background-color: var(--blue);
+    -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 10' preserveAspectRatio='none'><line x1='0' y1='5' x2='20' y2='5' stroke='black' stroke-width='1.5' stroke-linecap='round'/><polygon points='20,2 25,5 20,8' fill='black'/></svg>") no-repeat center / contain;
+            mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 26 10' preserveAspectRatio='none'><line x1='0' y1='5' x2='20' y2='5' stroke='black' stroke-width='1.5' stroke-linecap='round'/><polygon points='20,2 25,5 20,8' fill='black'/></svg>") no-repeat center / contain;
+    opacity: 0.9;
+  }
+  .phase-page.done .tl-col .stem::after { background-color: var(--green); }
+  .phase-page.token .tl-col .stem::after { background-color: var(--red); }
+  /* tick marker on the rail itself, aligned with stem center */
+  .tl-col .stem::before {
+    content: "";
+    position: absolute;
+    top: 52px;
+    right: -4px;
+    width: 12px; height: 12px;
+    transform: translate(50%, -50%);
+    background: var(--bg);
+    border: 2px solid var(--blue);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(85,93,255,0.15);
+    z-index: 2;
+  }
+  .phase-page.done .tl-col .stem::before { border-color: var(--green); box-shadow: 0 0 0 3px rgba(56,224,161,0.15); }
+  .phase-page.token .tl-col .stem::before { border-color: var(--red); box-shadow: 0 0 0 3px rgba(255,85,88,0.15); }
+
+  .tl-col .stem .sidx {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .tl-col .stem .snm {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 1.05;
+    color: var(--ink);
+  }
+
+  .phase-right { min-width: 0; position: relative; }
+  .phase-right .r-head {
+    position: absolute;
+    top: 40px;
+    left: 0; right: 0;
+    display: grid;
+    grid-template-columns: 1fr 160px;
+    gap: 24px;
+    align-items: start;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .phase-right .r-head .rh-left { min-width: 0; }
+  .phase-right .r-head .rh-mascot {
+    width: 140px; height: 140px;
+    background: url('assets/mascot-robot.jpg') center/cover no-repeat;
+    border-radius: 14px;
+    mask-image: radial-gradient(ellipse at center, #000 55%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 85%);
+    opacity: 0.95;
+  }
+  .phase-right .r-head .rh-mascot.q2 {
+    width: 238px; height: 238px;
+    background: url('assets/mascot-q2.png') center/contain no-repeat;
+    border-radius: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
+    opacity: 1;
+    filter: none;
+    margin-top: -16px;
+    transform: translate(-12px, -28px);
+  }
+  .phase-right .r-head .rh-eyebrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .phase-right .r-head .rh-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .phase-right .r-head .rh-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-dim);
+    max-width: 620px;
+    margin-bottom: 16px;
+  }
+  .phase-page.done .phase-right .r-head .rh-title { color: var(--green); }
+  .phase-page.token .phase-right .r-head .rh-title { color: var(--red); }
+  .features {
+    display: grid;
+    gap: 16px;
+  }
+  .features .feature { min-height: 240px; }
+
+  .badge {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    display: inline-flex; align-items: center; gap: 6px;
+    border: 1px solid;
+    border-radius: 999px;
+    margin-top: 12px;
+  }
+  .badge .dot { width: 6px; height: 6px; border-radius: 50%; }
+  .badge.live { color: var(--green); border-color: var(--green-edge); background: var(--green-soft); }
+  .badge.live .dot { background: var(--green); }
+  .badge.upcoming { color: var(--blue); border-color: var(--blue-edge); background: var(--blue-soft); }
+  .badge.upcoming .dot { background: var(--blue); }
+  .badge.token { color: var(--red); border-color: var(--red-edge); background: var(--red-soft); }
+  .badge.token .dot { background: var(--red); }
+
+  /* ---------- FEATURE ROW (2-col: label + preview) ---------- */
+  .features {
+    display: grid;
+    gap: 16px;
+    padding-top: 257px;
+  }
+  .features .feature { min-height: 240px; }
+  .feature {
+    display: grid;
+    grid-template-columns: 1fr 260px;
+    gap: 22px;
+    align-items: start;
+    padding: 20px;    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    position: relative;
+    overflow: visible;
+  }
+  /* connector on the left edge of the feature card, linking back to the timeline rail */
+  .feature::after {
+    content: "";
+    position: absolute;
+    top: var(--line-y, 52px);
+    left: -30px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 1.5px;
+    background: var(--blue);
+    opacity: 0.55;
+    z-index: 0;
+  }
+  .phase-page.done .features .feature::after { background: var(--green); }
+  .phase-page.token .features .feature::after { background: var(--red); }
+  /* Corner accents on the card's left edge instead of a solid bar */
+  .feature::before {
+    content: "";
+    position: absolute;
+    left: -1px; top: -1px;
+    width: 18px; height: 18px;
+    border-top: 1.5px solid var(--blue);
+    border-left: 1.5px solid var(--blue);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  .feature .corner-bl {
+    position: absolute;
+    left: -1px; bottom: -1px;
+    width: 18px; height: 18px;
+    border-bottom: 1.5px solid var(--blue);
+    border-left: 1.5px solid var(--blue);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+  .phase-page.done .feature::before,
+  .phase-page.done .feature .corner-bl { border-color: var(--green); }
+  .phase-page.token .feature::before,
+  .phase-page.token .feature .corner-bl { border-color: var(--red); }
+  .feature.hot::before { border-color: var(--red); }
+  .feature.hot .corner-bl { border-color: var(--red); }
+  .feature.done::before { border-color: var(--green); }
+  .feature.done .corner-bl { border-color: var(--green); }
+
+  .feature .f-left {
+    display: flex; flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .feature .f-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+  .feature .f-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.05;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+  }
+  .feature .f-desc {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+    margin-top: 2px;
+  }
+  .feature .f-meta {
+    margin-top: auto;
+    display: flex; flex-wrap: wrap; gap: 6px;
+    padding-top: 12px;
+  }
+  .feature .f-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 8px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-dim);
+    white-space: nowrap;
+    width: fit-content;
+  }
+  .feature .f-tag.on { color: var(--blue); border-color: var(--blue-edge); background: var(--blue-soft); }
+  .feature .f-tag.hot { color: var(--red); border-color: var(--red-edge); background: var(--red-soft); }
+
+  /* Preview panel on the right */
+  .preview {
+    background: var(--bg-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+  }
+  .preview .p-chrome {
+    position: absolute;
+    top: 10px; left: 12px; right: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.24em;
+    color: var(--ink-mute);
+    text-transform: uppercase;
+  }
+  .preview .p-chrome > span:not(.dots) { display: none; }
+  .preview .p-chrome .dots { display: flex; gap: 4px; }
+  .preview .p-chrome .dots i {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--ink-mute); display: inline-block; opacity: 0.5;
+  }
+
+  /* ---------- Preview visuals ---------- */
+  /* Chat preview */
+  .pv-chat {
+    width: 100%; max-width: 280px;
+    display: flex; flex-direction: column; gap: 8px;
+    margin-top: 18px;
+  }
+  .bubble {
+    padding: 8px 12px;
+    font-size: 12px;
+    line-height: 1.4;
+    border-radius: 14px;
+    max-width: 80%;
+    font-family: 'Barlow', sans-serif;
+  }
+  .bubble.me { background: var(--blue); color: white; align-self: flex-end; border-bottom-right-radius: 4px; }
+  .bubble.them { background: #132149; color: var(--ink); align-self: flex-start; border-bottom-left-radius: 4px; }
+  .pv-pay {
+    align-self: flex-end;
+    background: linear-gradient(135deg, #1a2870, #0a1130);
+    border: 1px solid var(--blue-edge);
+    border-radius: 14px;
+    padding: 10px 12px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: flex; align-items: center; gap: 8px;
+    max-width: 80%;
+  }
+  .pv-pay .amt { font-size: 18px; color: var(--blue-2); font-weight: 700; }
+
+  /* Identity card preview */
+  .pv-id {
+    width: 260px;
+    background: linear-gradient(180deg, #0c1a44, #030b22);
+    border: 1px solid var(--blue-edge);
+    border-radius: 14px;
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pv-id::before {
+    content: "";
+    position: absolute; right: -30px; top: -30px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(85,93,255,0.4), transparent 70%);
+  }
+  .pv-id .avatar {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, #555DFF, #2a307f);
+    display: grid; place-items: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 18px;
+    color: white;
+  }
+  .pv-id .uname {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 18px; letter-spacing: 0.02em;
+  }
+  .pv-id .addr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--ink-dim); letter-spacing: 0.06em;
+    word-break: break-all;
+  }
+  .pv-id .chips { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
+  .pv-id .chip {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; padding: 3px 7px; border-radius: 999px;
+    background: var(--blue-soft); color: var(--blue-2);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* Multisig preview */
+  .pv-sig {
+    display: flex; flex-direction: column; gap: 8px; width: 100%;
+    max-width: 280px; margin-top: 12px;
+  }
+  .sig-row {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 10px;
+    background: #0c1a44;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+  }
+  .sig-row .av {
+    width: 22px; height: 22px; border-radius: 6px;
+    background: linear-gradient(135deg, #555DFF, #2a307f);
+  }
+  .sig-row .nm { flex: 1; }
+  .sig-row .st {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+  .sig-row.ok .st { color: var(--green); }
+  .sig-row.pnd .st { color: var(--ink-mute); }
+
+  /* Missions preview */
+  .pv-miss {
+    display: flex; flex-direction: column; gap: 8px; width: 100%; max-width: 280px;
+  }
+  .mission {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 12px;
+    background: #0c1a44;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+  }
+  .mission .mark {
+    width: 20px; height: 20px; border-radius: 6px;
+    background: var(--blue-soft); border: 1px solid var(--blue-edge);
+    display: grid; place-items: center;
+    color: var(--blue-2); font-size: 11px;
+  }
+  .mission .mark.done { background: var(--green-soft); border-color: var(--green-edge); color: var(--green); }
+  .mission .t {
+    font-family: 'Barlow', sans-serif; font-size: 12px; flex: 1;
+  }
+  .mission .xp {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 14px;
+    color: var(--blue-2); letter-spacing: 0.02em;
+  }
+
+  /* Generic doc preview */
+  .pv-doc {
+    width: 240px; padding: 16px;
+    background: #0b1736; border: 1px solid var(--line); border-radius: 12px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .pv-doc .line {
+    height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px;
+  }
+  .pv-doc .line.s { width: 60%; }
+  .pv-doc .line.m { width: 85%; }
+  .pv-doc .line.l { width: 100%; }
+  .pv-doc .line.hl { background: var(--blue); opacity: 0.8; }
+
+  /* Video call preview */
+  .pv-call {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 260px;
+  }
+  .pv-call .tile {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1a2870, #030b22);
+    position: relative;
+    border: 1px solid var(--line);
+  }
+  .pv-call .tile::after {
+    content: attr(data-name);
+    position: absolute;
+    left: 6px; bottom: 6px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: 0.2em;
+    color: rgba(255,255,255,0.7);
+    text-transform: uppercase;
+    background: rgba(0,0,0,0.5); padding: 2px 5px; border-radius: 4px;
+  }
+  .pv-call .tile.me { background: linear-gradient(135deg, #555DFF, #1a2870); }
+
+  /* Marketplace preview */
+  .pv-mkt {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 260px;
+  }
+  .pv-mkt .card {
+    background: #0c1a44; border: 1px solid var(--line); border-radius: 10px;
+    padding: 10px; display: flex; flex-direction: column; gap: 6px;
+  }
+  .pv-mkt .card .ph {
+    height: 48px; border-radius: 6px;
+    background: linear-gradient(135deg, #1a2870, #030b22);
+  }
+  .pv-mkt .card .ph.r { background: linear-gradient(135deg, #7a1520, #2a0810); }
+  .pv-mkt .card .nm {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 13px;
+  }
+  .pv-mkt .card .pr {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--blue-2); letter-spacing: 0.1em;
+  }
+
+  /* Trading preview */
+  .pv-trade {
+    width: 280px;
+    padding: 12px;
+    background: #0b1736;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .pv-trade .hd { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--ink-mute); text-transform: uppercase; }
+  .pv-trade .price { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 24px; color: var(--green); }
+  .pv-trade .chart { height: 50px; position: relative; }
+  .pv-trade svg { width: 100%; height: 100%; overflow: visible; }
+  .pv-trade .stats { display: flex; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 9px; color: var(--ink-dim); letter-spacing: 0.12em; text-transform: uppercase; }
+
+  /* Token preview */
+  .pv-token {
+    width: 240px;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 12px;
+  }
+  .pv-token .coin {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #FF8a8d, #FF5558 55%, #6b1a1e 100%);
+    display: grid; place-items: center;
+    position: relative;
+    box-shadow: 0 0 50px rgba(255,85,88,0.3), inset 0 0 30px rgba(0,0,0,0.4);
+  }
+  .pv-token .coin::before {
+    content: ""; position: absolute; inset: 10%;
+    border: 1px dashed rgba(255,255,255,0.3); border-radius: 50%;
+  }
+  .pv-token .coin .sym {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 800;
+    color: white; font-size: 38px; letter-spacing: 0.02em;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  }
+  .pv-token .cap {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.24em;
+    color: var(--red); text-transform: uppercase;
+  }
+
+  /* Launchpad preview */
+  .pv-lpad {
+    width: 260px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .pv-lpad .proj {
+    padding: 10px; background: #0c1a44; border: 1px solid var(--line);
+    border-radius: 10px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .pv-lpad .proj .ic {
+    width: 28px; height: 28px; border-radius: 8px;
+    background: linear-gradient(135deg, #FF5558, #7a1520);
+  }
+  .pv-lpad .proj .ic.b { background: linear-gradient(135deg, #555DFF, #2a307f); }
+  .pv-lpad .proj .ic.g { background: linear-gradient(135deg, #38E0A1, #1a6b4c); }
+  .pv-lpad .proj .nm { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 14px; flex: 1; }
+  .pv-lpad .proj .bar {
+    width: 60px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.08); position: relative; overflow: hidden;
+  }
+  .pv-lpad .proj .bar::after {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; background: var(--blue);
+    width: var(--pct, 60%);
+  }
+
+  /* Index/strategies preview */
+  .pv-idx {
+    width: 260px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .pv-idx .row {
+    display: grid; grid-template-columns: 1fr 60px 48px;
+    gap: 8px; align-items: center;
+    padding: 8px 10px; background: #0c1a44; border: 1px solid var(--line);
+    border-radius: 8px;
+    font-family: 'Barlow', sans-serif; font-size: 12px;
+  }
+  .pv-idx .row .tk { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.1em; color: var(--ink-dim); text-transform: uppercase; }
+  .pv-idx .row .al { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-align: right; }
+  .pv-idx .row .pc { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-align: right; }
+  .pv-idx .row .pc.up { color: var(--green); }
+  .pv-idx .row .pc.dn { color: var(--red); }
+
+  /* ---------- FOOTER MARK ---------- */
+  .foot {
+    border-top: 1px solid var(--line);
+    padding: 20px 56px 28px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: center;
+  }
+  .foot-note {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12px;
+    color: var(--ink-dim);
+    line-height: 1.5;
+    max-width: 520px;
+  }
+  .foot-note .hl {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom: 1px solid var(--blue);
+    padding-bottom: 1px;
+  }
+  .foot-mark { text-align: right; }
+  .foot-mark .wp {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+  .foot-mark .wp span { color: var(--blue); }
+  .foot-mark .wp-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--ink-dim);
+    text-transform: uppercase;
+    margin-top: 10px;
+  }
+
+  .page-label {
+    display: none;
+  }
+
+  /* ---------- TOKENOMICS PAGE ---------- */
+  .tok-head {
+    padding: 40px 56px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .tok-head .kicker { margin: 0; }
+  .tok-head h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    font-size: 58px;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    margin: 10px 0 0;
+    text-transform: uppercase;
+  }
+  .tok-head h2 .accent { color: var(--red); }
+
+  .tok-body {
+    padding: 36px 56px 44px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+  }
+  .tok-donut {
+    aspect-ratio: 1;
+    position: relative;
+    display: grid; place-items: center;
+  }
+  .tok-donut svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+  .tok-donut .center {
+    position: absolute;
+    text-align: center;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .tok-donut .center .n {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 54px; line-height: 0.9;
+    letter-spacing: 0.01em;
+  }
+  .tok-donut .center .n .acc { color: var(--blue); }
+  .tok-donut .center .sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.24em;
+    color: var(--ink-dim); text-transform: uppercase;
+  }
+  .tok-donut .center .tk {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.3em;
+    color: var(--ink-mute); text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .tok-list { display: flex; flex-direction: column; gap: 10px; }
+  .tok-row {
+    display: grid;
+    grid-template-columns: 12px 1fr 54px;
+    gap: 14px;
+    align-items: center;
+    padding: 10px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+  .tok-row .sw {
+    width: 12px; height: 12px; border-radius: 4px;
+    background: var(--color, var(--blue));
+  }
+  .tok-row .nm {
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px; font-weight: 500;
+  }
+  .tok-row .nm small {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em;
+    color: var(--ink-mute); text-transform: uppercase;
+    margin-top: 2px; font-weight: 400;
+  }
+  .tok-row .pc {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 20px;
+    text-align: right;
+    letter-spacing: 0.01em;
+  }
+
+  /* ---------- CONTROLS ---------- */
+  .controls {
+    position: fixed;
+    bottom: 18px; right: 18px;
+    display: flex; gap: 8px;
+    z-index: 50;
+  }
+  .controls button {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: #0C1836;
+    color: #EAF0FF;
+    border: 1px solid rgba(85,93,255,0.4);
+    padding: 10px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .controls button:hover { background: #152451; }
+
+  /* ---- PRINT ---- */
+  @page { size: A4 portrait; margin: 0; }
+  @media print {
+    html, body { background: var(--bg); }
+    .doc { padding: 0; gap: 0; }
+    .page {
+      width: 210mm;
+      border-radius: 0;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: avoid; }
+    .controls { display: none !important; }
+  }
+</style>
+
+<div class="doc">
+
+  <!-- =========================================================
+       PAGE 01 · COVER + OVERVIEW STRIP
+       ========================================================= -->
+  <div class="page">
+    <div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+    <div class="page-tag">SOL / DOC-003 · ROADMAP</div>
+
+    <header class="hero">
+      <div>
+        <div class="brand">
+          <img src="assets/solius-wordmark.png" alt="SOLIUS" class="brand-logo">
+        </div>
+        <p class="kicker">Veřejný roadmap · 2025 – 2026</p>
+        <h1 class="title">Cesta k<br><span class="accent">Mainnetu.</span></h1>
+      </div>
+      <div class="hero-meta">
+        <div>Síť · <b>Solana</b></div>
+        <div>Blockchain · <b>Nativně on-chain</b></div>
+        <div>Vydáno · <b>20. dub 2026</b></div>
+        <div>Verze · <b>v1.2</b></div>
+      </div>
+          </header>
+
+    <div class="strip">
+      <div class="cell"><div class="k">Fáze</div><div class="v">04 Etapy</div></div>
+      <div class="cell"><div class="k">Stav</div><div class="v">Alpha běží</div></div>
+      <div class="cell"><div class="k">Další milník</div><div class="v blue">Beta · Q2 2026</div></div>
+      <div class="cell"><div class="k">Spuštění tokenu</div><div class="v red">Q4 2026</div></div>
+    </div>
+
+    <div class="legend">
+      <div class="item"><span class="dot g"></span>Hotovo</div>
+      <div class="item"><span class="dot b"></span>Nadcházející release</div>
+      <div class="item"><span class="dot r"></span>Token / hlavní událost</div>
+      <div class="item" style="margin-left:auto">Zdroj · solius_info_v1CZ</div>
+    </div>
+
+    <div class="foot">
+      <div class="foot-note">
+        Podrobný roadmap pro SOLIUS — sociální + platební + obchodní platformu běžící
+        plně on-chain na Solaně. Každá fáze popisuje funkce, které uvidíte spuštěné,
+        doplněné o UI náhledy napravo. Finální whitepaper a tokenomics —
+        nejpozději <span class="hl">15. května 2026</span>.
+      </div>
+      <div class="foot-mark">
+        <div class="wp">Solius <span>platforma</span></div>
+        <div class="wp-date">Veřejný release · 15.05.2026</div>
+      </div>
+    </div>
+    <div class="page-label">S. 01 · Úvod</div>
+  </div>
+
+  <!-- =========================================================
+       PAGE 02 · PHASE 01 ALPHA
+       ========================================================= -->
+  <div class="page">
+    <div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+
+    <div class="phase-page done">
+      <div class="tl-col">
+        <div class="num">01</div>
+        <div class="phase-date">Alpha</div>
+        <div class="phase-sub">01.11.2025 · v0.0.1</div>
+        <div class="phase-title">Alpha Release</div>
+        <span class="badge live"><span class="dot"></span>Aktivní</span>
+        <div class="tl-stems">
+          <div class="stem"><div class="stxt"><div class="sidx">01 · Funkce</div><div class="snm">Integrace Solana</div></div><div class="sdot"></div></div>
+        </div>
+      </div>
+      <div class="phase-right">
+        <div class="r-head">
+          <div class="rh-left"><div class="rh-eyebrow">Fáze 01 · Alpha</div>
+          <div class="rh-title">Základní Klient Spuštěn</div>
+          <div class="rh-desc">Základ nativního Solana messengeru: zabezpečený chat, identita napojená na peněženku a stabilní on-chain akce. Základna, na které staví všechny další fáze.</div></div>
+        </div>
+        <div class="features">
+          <div class="feature done">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">01 · Funkce</div>
+              <div class="f-title">Integrace Solana</div>
+              <div class="f-desc">První veřejná alpha verze. Připojení peněženky, založení účtu, úvodní on-chain synchronizace proti Solana mainnetu a devnetu.</div>
+              <div class="f-meta">
+                <span class="f-tag on">Napojení Peněženky</span>
+                <span class="f-tag">Devnet</span>
+                <span class="f-tag">Mainnet Připraven</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>solius · alpha</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-id">
+                <div style="display:flex; gap:10px; align-items:center;">
+                  <div class="avatar">Ξ</div>
+                  <div>
+                    <div class="uname">@alice.sol</div>
+                    <div class="addr">7xKXtg2C…p9U4WvZ</div>
+                  </div>
+                </div>
+                <div class="chips">
+                  <span class="chip">Připojeno</span>
+                  <span class="chip">Solana</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-label">S. 02 · Alpha</div>
+  </div>
+
+  <!-- =========================================================
+       PAGE 03 · PHASE 02 Q2 2026 · BETA VERSION LAUNCH
+       ========================================================= -->
+  <div class="page">
+    <div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+
+    <div class="phase-page">
+      <div class="tl-col">
+        <div class="num">02</div>
+        <div class="phase-date">Q2 2026</div>
+        <div class="phase-sub">01.05.2026 · v1.0.0</div>
+        <div class="phase-title">Spuštění Beta Verze</div>
+        <span class="badge upcoming"><span class="dot"></span>Nadcházející</span>
+        <div class="tl-stems">
+          <div class="stem"><div class="stxt"><div class="sidx">01</div><div class="snm">Chat + Platby v Chatu</div></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">02</div><div class="snm">Placené Skupiny a Kanály</div></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">03</div><div class="snm">Krypto Identita</div></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">04</div><div class="snm">Multisign</div></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">05</div><div class="snm">Systém Misí</div></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">06 · Milník</div><div class="snm">Whitepaper a Tokenomics</div></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">07</div><div class="snm">Veřejné Krypto Profily</div></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">08</div><div class="snm">Komunity</div></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">09</div><div class="snm">Správa Portfolia</div></div></div>
+        </div>
+      </div>
+      <div class="phase-right">
+        <div class="r-head">
+          <div class="rh-left"><div class="rh-eyebrow">Fáze 02 · Q2 2026 · Beta Verze</div>
+          <div class="rh-title">Odemčení Sociální Vrstvy a Monetizace</div>
+          <div class="rh-desc">Proměníme Alpha klienta v plnou sociální síť: placené skupiny, on-chain identita, multisign, nástroje pro tvůrce a systém misí. Cíl kvartálu — dokázat, že produkt funguje ve velkém měřítku a vydat whitepaper 15.05.2026 s finální tokenomics.</div></div>
+          <div class="rh-mascot q2" aria-hidden="true"></div>
+        </div>
+        <div class="features">
+
+          <div class="feature">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">01 · Funkce</div>
+              <div class="f-title">Chat + Platby v Chatu</div>
+              <div class="f-desc">End-to-end šifrovaný chat s platbami v nativním tokenu a stablecoinech přímo v proudu zpráv.</div>
+              <div class="f-meta">
+                <span class="f-tag on">On-chain</span>
+                <span class="f-tag">1:1 Chat · Skupiny · Kanály</span>
+                <span class="f-tag">Šifrovaný Chat na Blockchainu</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>chat · #builders</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-chat">
+                <div class="bubble them">ahoj, můžeš mi poslat peníze za mou práci?</div>
+                <div class="bubble me">posílám</div>
+                <div class="pv-pay"><span>Odesláno</span> <span class="amt">25 USDC</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">02 · Funkce</div>
+              <div class="f-title">Placené Skupiny a Kanály</div>
+              <div class="f-desc">Tvůrci monetizují přístup jednorázovými nebo opakovanými poplatky. Přístup je gated tokenem, vymáhán on-chain — bez prostředníka.</div>
+              <div class="f-meta">
+                <span class="f-tag on">Vše na Blockchainu</span>
+                <span class="f-tag">Premium Přístup</span>
+                <span class="f-tag">Budování Komunit</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>channel · pro-signals</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-doc">
+                <div class="line hl l"></div>
+                <div class="line m"></div>
+                <div class="line l"></div>
+                <div class="line s"></div>
+                <div style="display:flex; gap:6px; margin-top:4px;">
+                  <span class="f-tag on">5 USDC / měs</span>
+                  <span class="f-tag">380 členů</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">03 · Funkce</div>
+              <div class="f-title">Krypto Identita</div>
+              <div class="f-desc">Vaše peněženka se stává vaší identitou: čitelné jméno, ověřené domény, on-chain reputace. Přenositelná napříč sítí.</div>
+              <div class="f-meta">
+                <span class="f-tag on">Zabezpečená Identita</span>
+                <span class="f-tag">Ověřeno</span>
+                <span class="f-tag">Vše v Jednom Řešení</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>identity · public</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-id">
+                <div style="display:flex; gap:10px; align-items:center;">
+                  <div class="avatar">S</div>
+                  <div>
+                    <div class="uname">@solana.sol</div>
+                    <div class="addr">So11111…111112</div>
+                  </div>
+                </div>
+                <div class="chips">
+                  <span class="chip">Ověřeno</span>
+                  <span class="chip">Builder</span>
+                  <span class="chip">Reputace · 4.8</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">04 · Funkce</div>
+              <div class="f-title">Multisign</div>
+              <div class="f-desc">Vyberte si libovolný počet zařízení, která musí spolu-podepsat vaše akce — transakce, schvalování, citlivé kroky. Žádný software třetí strany, vše běží na jedné platformě.</div>
+              <div class="f-meta">
+                <span class="f-tag on">Podpis Více Zařízeními</span>
+                <span class="f-tag">Multi-Device Autentikátor</span>
+                <span class="f-tag">Vlastní Správa</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>multisig · 2-of-3</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-sig">
+                <div class="sig-row ok"><div class="av"></div><div class="nm">iPhone · Phantom</div><div class="st">Podepsáno</div></div>
+                <div class="sig-row ok"><div class="av"></div><div class="nm">MacBook · Solflare</div><div class="st">Podepsáno</div></div>
+                <div class="sig-row pnd"><div class="av"></div><div class="nm">Ledger Nano X</div><div class="st">Čeká</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">05 · Funkce</div>
+              <div class="f-title">Systém Misí</div>
+              <div class="f-desc">On-chain úkoly a kampaně. Plňte úkoly → získávejte airdrop body, reputaci a NFT odměny. Motor růstu uživatelů.</div>
+              <div class="f-meta">
+                <span class="f-tag on">Airdrop Body</span>
+                <span class="f-tag">Kampaně</span>
+                <span class="f-tag">NFT Odměny</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>missions · week 12</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-miss">
+                <div class="mission"><div class="mark done">✓</div><div class="t">Napojit peněženku</div><div class="xp">+50</div></div>
+                <div class="mission"><div class="mark done">✓</div><div class="t">Pozvat kamaráda</div><div class="xp">+120</div></div>
+                <div class="mission"><div class="mark">◇</div><div class="t">Vytvořit placený kanál</div><div class="xp">+300</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">06 · Milník</div>
+              <div class="f-title">Oficiální Whitepaper a Tokenomics</div>
+              <div class="f-desc">Kompletní technický dokument, ekonomický model a alokace tokenu. Zveřejněno nejpozději <b>15. května 2026</b>.</div>
+              <div class="f-meta">
+                <span class="f-tag on">Whitepaper</span>
+                <span class="f-tag on">Tokenomics</span>
+                <span class="f-tag">Audity</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>whitepaper.pdf</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-doc">
+                <div class="line hl s"></div>
+                <div class="line l"></div>
+                <div class="line m"></div>
+                <div class="line l"></div>
+                <div class="line m"></div>
+                <div class="line s"></div>
+                <div class="line hl m"></div>
+                <div class="line l"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">07 · Funkce</div>
+              <div class="f-title">Veřejné Krypto Profily</div>
+              <div class="f-desc">Sdílitelné veřejné profily — držené tokeny, aktivita, reputace, projekty. Sociální graf pro on-chain svět.</div>
+              <div class="f-meta">
+                <span class="f-tag on">Veřejná URL</span>
+                <span class="f-tag">Feed Aktivity</span>
+                <span class="f-tag">Sledující</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>solius.xyz/@you</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-id">
+                <div style="display:flex; gap:10px; align-items:center;">
+                  <div class="avatar">A</div>
+                  <div>
+                    <div class="uname">@anna.sol</div>
+                    <div class="addr">1 284 sledujících</div>
+                  </div>
+                </div>
+                <div class="chips">
+                  <span class="chip">DeFi Trader</span>
+                  <span class="chip">Builder</span>
+                  <span class="chip">EU</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">08 · Funkce</div>
+              <div class="f-title">Komunity</div>
+              <div class="f-desc">Plnohodnotné komunitní prostory — kanály, události, governance hlasování, sdílené pokladny. Připraveno jako DAO rovnou z krabice.</div>
+              <div class="f-meta">
+                <span class="f-tag on">Governance</span>
+                <span class="f-tag">Hlasování</span>
+                <span class="f-tag">Pokladny</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>community · solbuilders</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-miss">
+                <div class="mission"><div class="mark">#</div><div class="t">obecné</div><div class="xp" style="font-size:11px; color: var(--ink-mute);">2.4k</div></div>
+                <div class="mission"><div class="mark">#</div><div class="t">návrhy</div><div class="xp" style="font-size:11px; color: var(--ink-mute);">128</div></div>
+                <div class="mission"><div class="mark">#</div><div class="t">pokladna</div><div class="xp" style="font-size:11px; color: var(--blue-2);">98.3K</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <div class="corner-bl"></div>
+            <div class="f-left">
+              <div class="f-num">09 · Funkce</div>
+              <div class="f-title">Správa Portfolia</div>
+              <div class="f-desc">Všechny peněženky a pozice v jednom pohledu. P&amp;L, alokace, riziko. Hluboká integrace se Solana DeFi.</div>
+              <div class="f-meta">
+                <span class="f-tag on">Více Peněženek</span>
+                <span class="f-tag">P&amp;L</span>
+                <span class="f-tag">Alokace</span>
+              </div>
+            </div>
+            <div class="preview">
+              <div class="p-chrome"><span>portfolio · 3 wallets</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-idx">
+                <div class="row"><div class="tk">SOL</div><div class="al">48.2</div><div class="pc up">+2.4%</div></div>
+                <div class="row"><div class="tk">USDC</div><div class="al">12.0k</div><div class="pc">0.0%</div></div>
+                <div class="row"><div class="tk">JUP</div><div class="al">9,820</div><div class="pc dn">−1.1%</div></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="page-label">S. 03 · Q2 2026 · Beta</div>
+  </div>
+
+  <!-- =========================================================
+       PAGE 05 · PHASE 04 Q3 2026
+       ========================================================= -->
+  <div class="page">
+    <div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+
+    <div class="phase-page">
+      <div class="tl-col">
+        <div class="num">03</div>
+        <div class="phase-date">Q3 2026</div>
+        <div class="phase-sub">Sociální + Trading</div>
+        <div class="phase-title">Marketplace a Trading</div>
+        <span class="badge upcoming"><span class="dot"></span>Nadcházející</span>
+        <div class="tl-stems">
+          <div class="stem"><div class="stxt"><div class="sidx">01</div><div class="snm">Videohovory a Hlasové Zprávy</div></div><div class="sdot"></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">02</div><div class="snm">Multisign + Správa Peněženky</div></div><div class="sdot"></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">03</div><div class="snm">Marketplace a Business</div></div><div class="sdot"></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">04</div><div class="snm">Trading a Copytrading v Chatu</div></div><div class="sdot"></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">05</div><div class="snm">Indexy a Strategie</div></div><div class="sdot"></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">06</div><div class="snm">Hromadný Onboarding Uživatelů</div></div><div class="sdot"></div></div>
+        </div>
+      </div>
+      <div class="phase-right">
+        <div class="r-head">
+          <div class="rh-left"><div class="rh-eyebrow">Fáze 03 · Q3 2026</div>
+          <div class="rh-title">Škálování a On-chain Finance</div>
+          <div class="rh-desc">Posun od messengeru k plnohodnotnému on-chain workspace: videohovory, správa peněženek, marketplace, copytrading a indexy. Cíl — onboardovat masu uživatelů před spuštěním tokenu a udělat ze Soliu každodenní hub.</div></div>
+        </div>
+        <div class="features">
+
+        <div class="feature">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">01 · Funkce</div>
+            <div class="f-title">Videohovory a Hlasové Zprávy</div>
+            <div class="f-desc">Hovory v reálném čase a asynchronní hlasové zprávy — end-to-end šifrované, na stejné vrstvě identity jako chat.</div>
+            <div class="f-meta">
+              <span class="f-tag on">E2E Šifrované</span>
+              <span class="f-tag">Skupinové Hovory</span>
+              <span class="f-tag">Hlasové Zprávy</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>call · 4 participants</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-call">
+              <div class="tile me" data-name="You"></div>
+              <div class="tile" data-name="Alice"></div>
+              <div class="tile" data-name="Bob"></div>
+              <div class="tile" data-name="Carol"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">02 · Funkce</div>
+            <div class="f-title">On-chain Multisign + Správa Peněženky</div>
+            <div class="f-desc">Pokročilé programovatelné peněženky — pravidla, limity útrat, obnova, rotace klíčů. Vše on-chain.</div>
+            <div class="f-meta">
+              <span class="f-tag on">Pravidla</span>
+              <span class="f-tag">Obnova</span>
+              <span class="f-tag">Limity Útrat</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>wallet · policies</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-sig">
+              <div class="sig-row ok"><div class="av"></div><div class="nm">Denní limit · 1 SOL</div><div class="st">Aktivní</div></div>
+              <div class="sig-row ok"><div class="av"></div><div class="nm">Whitelist · 6 adres</div><div class="st">Aktivní</div></div>
+              <div class="sig-row pnd"><div class="av"></div><div class="nm">Obnova · 2 strážci</div><div class="st">Aktivováno</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">03 · Funkce</div>
+            <div class="f-title">Marketplace a Business Sekce</div>
+            <div class="f-desc">Adresář zboží, služeb a digitálních produktů. Vestavěný escrow, hodnocení, on-chain vypořádání. Prodejci dostanou vlastní obchod.</div>
+            <div class="f-meta">
+              <span class="f-tag on">Escrow</span>
+              <span class="f-tag">Obchody</span>
+              <span class="f-tag">Hodnocení</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>marketplace</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-mkt">
+              <div class="card"><div class="ph"></div><div class="nm">Návrh loga</div><div class="pr">120 USDC</div></div>
+              <div class="card"><div class="ph r"></div><div class="nm">Audit smart kontraktu</div><div class="pr">2 400 USDC</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">04 · Funkce</div>
+            <div class="f-title">Trading a Copytrading v Chatu</div>
+            <div class="f-desc">Swapujte a obchodujte bez opuštění konverzace. Sledujte top tradery a automaticky zrcadlete jejich pozice s nastavitelným rizikem.</div>
+            <div class="f-meta">
+              <span class="f-tag on">Swap v Chatu</span>
+              <span class="f-tag hot">Copytrading</span>
+              <span class="f-tag">Kontrola Rizika</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>SOL / USDC</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-trade">
+              <div class="hd"><span>SOL/USDC</span><span>24h</span></div>
+              <div class="price">$184.22</div>
+              <div class="chart">
+                <svg viewBox="0 0 200 50" preserveAspectRatio="none">
+                  <path d="M0,35 L20,30 L40,32 L60,24 L80,26 L100,20 L120,22 L140,14 L160,18 L180,10 L200,8"
+                        fill="none" stroke="#38E0A1" stroke-width="1.5"/>
+                  <path d="M0,35 L20,30 L40,32 L60,24 L80,26 L100,20 L120,22 L140,14 L160,18 L180,10 L200,8 L200,50 L0,50 Z"
+                        fill="url(#grad)" opacity="0.3"/>
+                  <defs>
+                    <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#38E0A1" stop-opacity="0.6"/>
+                      <stop offset="1" stop-color="#38E0A1" stop-opacity="0"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div class="stats"><span>+4.8%</span><span>VOL · 24M</span><span>LIQ · 8M</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">05 · Funkce</div>
+            <div class="f-title">Trading Indexy a Marketplace Strategií</div>
+            <div class="f-desc">Kurátorujte koše a algoritmické strategie. Publikujte, odebírejte, monetizujte. Marketplace pro alfu.</div>
+            <div class="f-meta">
+              <span class="f-tag on">Indexy</span>
+              <span class="f-tag on">Strategie</span>
+              <span class="f-tag">Předplatné</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>index · sol-majors</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-idx">
+              <div class="row"><div class="tk">SOL</div><div class="al">40%</div><div class="pc up">+8.1%</div></div>
+              <div class="row"><div class="tk">JUP</div><div class="al">25%</div><div class="pc up">+3.2%</div></div>
+              <div class="row"><div class="tk">JTO</div><div class="al">20%</div><div class="pc dn">−1.4%</div></div>
+              <div class="row"><div class="tk">PYTH</div><div class="al">15%</div><div class="pc up">+2.0%</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">06 · Feature</div>
+            <div class="f-title">Hromadný Onboarding Uživatelů</div>
+            <div class="f-desc">Pozvánkové flow, fiat on-ramp, mobile-first UX. Tah, jak dostat další milion uživatelů on-chain.</div>
+            <div class="f-meta">
+              <span class="f-tag on">Fiat On-ramp</span>
+              <span class="f-tag">Mobil</span>
+              <span class="f-tag">Doporučení</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>onboarding</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-miss">
+              <div class="mission"><div class="mark done">1</div><div class="t">Registrace telefonem</div><div class="xp">10s</div></div>
+              <div class="mission"><div class="mark done">2</div><div class="t">Nákup SOL kartou</div><div class="xp">30s</div></div>
+              <div class="mission"><div class="mark">3</div><div class="t">Začít psát</div><div class="xp">•</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </div>
+
+    <div class="page-label">S. 04 · Q3 2026</div>
+  </div>
+
+  <!-- =========================================================
+       PAGE 06 · PHASE 05 Q4 2026 TOKEN LAUNCH
+       ========================================================= -->
+  <div class="page">
+    <div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+
+    <div class="phase-page token">
+      <div class="tl-col">
+        <div class="num">04</div>
+        <div class="phase-date" style="color: var(--red);">Q4 2026</div>
+        <div class="phase-sub" style="color: var(--red);">Token Generation Event</div>
+        <div class="phase-title">Token Launch a DeFi</div>
+        <span class="badge token"><span class="dot"></span>Spuštění Tokenu</span>
+        <div class="tl-stems">
+          <div class="stem"><div class="stxt"><div class="sidx">01 · TGE</div><div class="snm">$SOLIUS Token Launch</div></div><div class="sdot"></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">02</div><div class="snm">Perps + Liquidity Pools</div></div><div class="sdot"></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">03</div><div class="snm">Token Launchpad</div></div><div class="sdot"></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">04</div><div class="snm">Tokenizace Firem</div></div><div class="sdot"></div></div>
+          <div class="stem"><div class="stxt"><div class="sidx">05</div><div class="snm">Marketplace v2</div></div><div class="sdot"></div></div>
+        </div>
+      </div>
+      <div class="phase-right">
+        <div class="r-head">
+          <div class="rh-left"><div class="rh-eyebrow">Fáze 04 · Q4 2026 · TGE</div>
+          <div class="rh-title">$SOLIUS Token Launch</div>
+          <div class="rh-desc">Ekonomická vrstva jde živě. Token generation event, perpetuals a likvidita, launchpad, tokenizace firem a marketplace v2. Mise kvartálu — nastartovat nativní ekonomiku a předat vlastnictví sítě jejím uživatelům.</div></div>
+        </div>
+        <div class="features">
+
+        <div class="feature hot">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">01 · Hlavní Událost</div>
+            <div class="f-title">$SOLIUS Token Launch</div>
+            <div class="f-desc">Veřejný generation event nativního tokenu. Distribuce, vesting a staking živě od prvního dne.</div>
+            <div class="f-meta">
+              <span class="f-tag hot">TGE</span>
+              <span class="f-tag hot">Staking Aktivní</span>
+              <span class="f-tag">Vesting</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>token · $SOLIUS</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-token">
+              <div class="coin"><div class="sym">$S</div></div>
+              <div class="cap">Celková zásoba · 1 000 000 000</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature hot">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">02 · Funkce</div>
+            <div class="f-title">Perpetuals + Nativní Liquidity Pools</div>
+            <div class="f-desc">Perp DEX postavený na nativních poolech. Hluboká likvidita, cross-margin, páka až 50× s on-chain risk enginem.</div>
+            <div class="f-meta">
+              <span class="f-tag hot">Perps</span>
+              <span class="f-tag on">LP pools</span>
+              <span class="f-tag">Cross-margin</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>perp · SOL-PERP</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-trade">
+              <div class="hd"><span>SOL-PERP</span><span>10× LONG</span></div>
+              <div class="price" style="color: var(--red);">$184.22</div>
+              <div class="chart">
+                <svg viewBox="0 0 200 50" preserveAspectRatio="none">
+                  <path d="M0,10 L20,14 L40,8 L60,18 L80,12 L100,24 L120,20 L140,32 L160,28 L180,36 L200,30"
+                        fill="none" stroke="#FF5558" stroke-width="1.5"/>
+                </svg>
+              </div>
+              <div class="stats"><span>−2.1%</span><span>FUNDING · 0.01%</span><span>OI · 42M</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature hot">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">03 · Funkce</div>
+            <div class="f-title">Token Launchpad</div>
+            <div class="f-desc">Permissionless launchpad pro projekty: fair launches, bonding křivky, vesting a anti-rug nástroje vestavěné.</div>
+            <div class="f-meta">
+              <span class="f-tag hot">Fair Launch</span>
+              <span class="f-tag">Bonding Křivky</span>
+              <span class="f-tag">Anti-rug</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>launchpad · live</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-lpad">
+              <div class="proj"><div class="ic"></div><div class="nm">$MEMO</div><div class="bar" style="--pct:72%"></div></div>
+              <div class="proj"><div class="ic b"></div><div class="nm">$NEXUS</div><div class="bar" style="--pct:45%"></div></div>
+              <div class="proj"><div class="ic g"></div><div class="nm">$GRID</div><div class="bar" style="--pct:88%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">04 · Funkce</div>
+            <div class="f-title">Tokenizace Firem</div>
+            <div class="f-desc">Tokenizace firem jedním kliknutím — podíly na výnosech, automatizovaná distribuce, compliance hooks. Maximální automatizace.</div>
+            <div class="f-meta">
+              <span class="f-tag on">Podíl na Výnosech</span>
+              <span class="f-tag">Compliance</span>
+              <span class="f-tag">Auto Distribuce</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>business · tokenize</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-doc">
+              <div class="line hl l"></div>
+              <div class="line m"></div>
+              <div class="line l"></div>
+              <div style="display:flex; gap:6px; margin-top:4px; flex-wrap:wrap;">
+                <span class="f-tag on">1M podílů</span>
+                <span class="f-tag">30% podíl</span>
+                <span class="f-tag">KYC'd</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="corner-bl"></div>
+          <div class="f-left">
+            <div class="f-num">05 · Funkce</div>
+            <div class="f-title">Marketplace v2</div>
+            <div class="f-desc">Marketplace nové generace se smart escrow, opakovanými službami, DAO jako kupci a hlubšími business nástroji.</div>
+            <div class="f-meta">
+              <span class="f-tag on">Smart Escrow</span>
+              <span class="f-tag">Opakované</span>
+              <span class="f-tag">DAO-ready</span>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="p-chrome"><span>marketplace · v2</span><span class="dots"><i></i><i></i><i></i></span></div>
+            <div class="pv-mkt">
+              <div class="card"><div class="ph"></div><div class="nm">Měsíční plán auditu</div><div class="pr">8k USDC/měs</div></div>
+              <div class="card"><div class="ph r"></div><div class="nm">DAO právní wrapper</div><div class="pr">1 200 USDC</div></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      </div>
+    </div>
+
+    <div class="page-label">S. 05 · Q4 2026</div>
+  </div>
+
+  <!-- =========================================================
+       PAGE 07 · TOKENOMICS
+       ========================================================= -->
+  <div class="page">
+    <div class="corners"><span class="tl"></span><span class="tr"></span><span class="bl"></span><span class="br"></span></div>
+    <div class="page-tag">PŘÍLOHA / TOKENOMICS</div>
+
+    <div class="tok-head">
+      <p class="kicker">$SOLIUS · Alokace Tokenu</p>
+      <h2>Token<span class="accent">omics.</span></h2>
+    </div>
+
+    <div class="tok-body">
+      <div class="tok-donut">
+        <!-- Donut ring; percentages: 5,5,5,19,8,11,35,12 -->
+        <svg viewBox="0 0 100 100">
+          <g stroke-width="14" fill="none">
+            <!-- Calculations: circumference = 2πr ≈ 251.33 with r=40
+                 Segments cumulative start offsets below -->
+            <!-- angel 5%  (0 - 5)     -->
+            <circle cx="50" cy="50" r="40" stroke="#8F95FF" stroke-dasharray="12.57 238.76" stroke-dashoffset="0"/>
+            <!-- private 5% (5 - 10)   -->
+            <circle cx="50" cy="50" r="40" stroke="#6E76FF" stroke-dasharray="12.57 238.76" stroke-dashoffset="-12.57"/>
+            <!-- public 5% (10 - 15)   -->
+            <circle cx="50" cy="50" r="40" stroke="#555DFF" stroke-dasharray="12.57 238.76" stroke-dashoffset="-25.13"/>
+            <!-- ICO 19% (15 - 34)     -->
+            <circle cx="50" cy="50" r="40" stroke="#3F47E0" stroke-dasharray="47.75 203.58" stroke-dashoffset="-37.70"/>
+            <!-- reserve 8% (34 - 42)  -->
+            <circle cx="50" cy="50" r="40" stroke="#2A2FA0" stroke-dasharray="20.11 231.22" stroke-dashoffset="-85.45"/>
+            <!-- airdrop 11% (42 - 53) -->
+            <circle cx="50" cy="50" r="40" stroke="#FF5558" stroke-dasharray="27.65 223.68" stroke-dashoffset="-105.56"/>
+            <!-- team 35% (53 - 88)    -->
+            <circle cx="50" cy="50" r="40" stroke="#1C2259" stroke-dasharray="87.96 163.37" stroke-dashoffset="-133.21"/>
+            <!-- staking 12% (88 - 100)-->
+            <circle cx="50" cy="50" r="40" stroke="#38E0A1" stroke-dasharray="30.16 221.17" stroke-dashoffset="-221.17"/>
+          </g>
+        </svg>
+        <div class="center">
+          <div class="n">1<span class="acc">B</span></div>
+          <div class="sub">Celková Zásoba</div>
+          <div class="tk">$SOLIUS · SPL</div>
+        </div>
+      </div>
+
+      <div class="tok-list">
+        <div class="tok-row"><span class="sw" style="--color:#8F95FF"></span><div class="nm">Angel Kola<small>Raní investoři A · B</small></div><div class="pc">5%</div></div>
+        <div class="tok-row"><span class="sw" style="--color:#6E76FF"></span><div class="nm">Privátní Kola<small>Privátní A · B</small></div><div class="pc">5%</div></div>
+        <div class="tok-row"><span class="sw" style="--color:#555DFF"></span><div class="nm">Veřejná Kola<small>Veřejná A · B</small></div><div class="pc">5%</div></div>
+        <div class="tok-row"><span class="sw" style="--color:#3F47E0"></span><div class="nm">ICO<small>Initial coin offering</small></div><div class="pc">19%</div></div>
+        <div class="tok-row"><span class="sw" style="--color:#2A2FA0"></span><div class="nm">Strategická Rezerva<small>Partnerství, market-making</small></div><div class="pc">8%</div></div>
+        <div class="tok-row"><span class="sw" style="--color:#FF5558"></span><div class="nm">Airdrop a Odměny z Misí<small>Komunitní motivace</small></div><div class="pc" style="color:var(--red);">11%</div></div>
+        <div class="tok-row"><span class="sw" style="--color:#1C2259"></span><div class="nm">Alokace Týmu<small>Vesting · víceletý cliff</small></div><div class="pc">35%</div></div>
+        <div class="tok-row"><span class="sw" style="--color:#38E0A1"></span><div class="nm">Staking Odměny<small>Distribuováno on-chain</small></div><div class="pc" style="color:var(--green);">12%</div></div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <div class="foot-note">
+        Alokace tokenu je indikativní a podléhá finálnímu
+        <span class="hl">whitepaperu a tokenomics</span>, který bude zveřejněn
+        nejpozději <span class="hl">15. května 2026</span>. Všechny parametry (vesting rozvrhy,
+        staking výnosy, emisní křivky) tam budou detailně popsány.
+      </div>
+      <div class="foot-mark">
+        <div class="wp">Solius <span>platforma</span></div>
+        <div class="wp-date">Veřejný release · 15.05.2026</div>
+      </div>
+    </div>
+
+    <div class="page-label">S. 06 · Tokenomics</div>
+  </div>
+
+</div>
+
+<div class="controls">
+  <button onclick="window.print()">Uložit jako PDF</button>
+</div>
+
+<script>
+  // Lock each timeline stem's title to the same y as its paired feature card's title
+  function syncStems() {
+    document.querySelectorAll('.phase-page').forEach(page => {
+      const stems = page.querySelectorAll('.tl-stems .stem');
+      const features = page.querySelectorAll('.features .feature');
+      const n = Math.min(stems.length, features.length);
+      // Reset any prior adjustments
+      for (let i = 0; i < n; i++) {
+        stems[i].style.minHeight = '';
+        const stxt = stems[i].querySelector('.stxt');
+        if (stxt) {
+          stxt.style.top = '';
+          stxt.style.removeProperty('--line-y');
+        }
+        features[i].style.minHeight = '';
+        features[i].style.removeProperty('--line-y');
+      }
+      // Reflow
+      void page.offsetHeight;
+      // Pass 1: equalize row heights using max of each pair
+      for (let i = 0; i < n; i++) {
+        const h = Math.max(stems[i].offsetHeight, features[i].offsetHeight);
+        stems[i].style.minHeight = h + 'px';
+        features[i].style.minHeight = h + 'px';
+      }
+      void page.offsetHeight;
+      // Pass 2: for each pair, shift .stxt so snm center aligns with f-title center
+      for (let i = 0; i < n; i++) {
+        const snm = stems[i].querySelector('.snm');
+        const fTitle = features[i].querySelector('.f-title');
+        const stxt = stems[i].querySelector('.stxt');
+        if (!snm || !fTitle || !stxt) continue;
+        const snmBox = snm.getBoundingClientRect();
+        const ftBox = fTitle.getBoundingClientRect();
+        const snmCenter = snmBox.top + snmBox.height / 2;
+        const ftCenter = ftBox.top + ftBox.height / 2;
+        const delta = ftCenter - snmCenter;
+        const currentTop = parseFloat(getComputedStyle(stxt).top) || 20;
+        stxt.style.top = (currentTop + delta) + 'px';
+      }
+      // Pass 3: set --line-y on each feature and each stxt to title center (y inside container)
+      for (let i = 0; i < n; i++) {
+        const fTitle = features[i].querySelector('.f-title');
+        const snm = stems[i].querySelector('.snm');
+        const stxt = stems[i].querySelector('.stxt');
+        if (fTitle) {
+          const fBox = features[i].getBoundingClientRect();
+          const tBox = fTitle.getBoundingClientRect();
+          const y = (tBox.top + tBox.height / 2) - fBox.top;
+          features[i].style.setProperty('--line-y', y + 'px');
+        }
+        if (snm && stxt) {
+          const sBox = stxt.getBoundingClientRect();
+          const tBox = snm.getBoundingClientRect();
+          const y = (tBox.top + tBox.height / 2) - sBox.top;
+          stxt.style.setProperty('--line-y', y + 'px');
+        }
+      }
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', syncStems);
+  } else {
+    syncStems();
+  }
+  window.addEventListener('load', syncStems);
+  window.addEventListener('resize', syncStems);
+  window.addEventListener('beforeprint', syncStems);
+</script>
