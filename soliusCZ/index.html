@@ -440,12 +440,13 @@
   }
   .phase-right .r-head .rh-left { min-width: 0; }
   .phase-right .r-head .rh-mascot {
-    width: 140px; height: 140px;
-    background: url('assets/mascot-robot.jpg') center/cover no-repeat;
-    border-radius: 14px;
-    mask-image: radial-gradient(ellipse at center, #000 55%, transparent 85%);
-    -webkit-mask-image: radial-gradient(ellipse at center, #000 55%, transparent 85%);
-    opacity: 0.95;
+    width: 180px; height: 180px;
+    background: url('assets/mascot-static.png') center/contain no-repeat;
+    border-radius: 0;
+    mask-image: none;
+    -webkit-mask-image: none;
+    opacity: 1;
+    margin-top: -10px;
   }
   .phase-right .r-head .rh-mascot.q2 {
     width: 238px; height: 238px;
@@ -1174,7 +1175,7 @@
           <div class="rh-left"><div class="rh-eyebrow">Fáze 01 · Alpha</div>
           <div class="rh-title">Základní Klient Běží</div>
           <div class="rh-desc">Nativní Solana messenger s bezpečným chatem, identitou napojenou na peněženku a on-chain akcemi. Fundament, na kterém stojí všechny další fáze.</div></div>
-          <div class="rh-mascot q2" aria-hidden="true"></div>
+          <div class="rh-mascot" aria-hidden="true"></div>
         </div>
         <div class="features">
           <div class="feature done">
