@@ -650,6 +650,20 @@
   }
 
   /* ---------- Preview visuals ---------- */
+  /* Screenshot preview (fills preview panel) */
+  .pv-screen {
+    width: 100%;
+    margin-top: 18px;
+    display: flex; justify-content: center; align-items: center;
+  }
+  .pv-screen img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    display: block;
+  }
+
   /* Chat preview */
   .pv-chat {
     width: 100%; max-width: 280px;
@@ -1295,15 +1309,8 @@
             </div>
             <div class="preview">
               <div class="p-chrome"><span>channel · pro-signals</span><span class="dots"><i></i><i></i><i></i></span></div>
-              <div class="pv-doc">
-                <div class="line hl l"></div>
-                <div class="line m"></div>
-                <div class="line l"></div>
-                <div class="line s"></div>
-                <div style="display:flex; gap:6px; margin-top:4px;">
-                  <span class="f-tag on">5 USDC / mo</span>
-                  <span class="f-tag">380 members</span>
-                </div>
+              <div class="pv-screen">
+                <img src="assets/paid-channels.png" alt="Paid channel management">
               </div>
             </div>
           </div>
