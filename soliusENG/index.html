@@ -650,6 +650,57 @@
   }
 
   /* ---------- Preview visuals ---------- */
+  /* Mini tokenomics visualization */
+  .pv-tok {
+    width: 100%;
+    margin-top: 18px;
+    display: flex; gap: 14px; align-items: center;
+  }
+  .pv-tok .tok-chart {
+    position: relative;
+    width: 110px; height: 110px; flex-shrink: 0;
+  }
+  .pv-tok .tok-chart svg {
+    width: 100%; height: 100%;
+    transform: rotate(-90deg);
+  }
+  .pv-tok .tok-center {
+    position: absolute; inset: 0;
+    display: grid; place-items: center;
+    text-align: center; line-height: 1;
+  }
+  .pv-tok .tok-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 24px; color: var(--ink);
+  }
+  .pv-tok .tok-num span { color: var(--blue-2); font-size: 18px; margin-left: 2px; }
+  .pv-tok .tok-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-dim); margin-top: 3px;
+  }
+  .pv-tok .tok-legend {
+    flex: 1; min-width: 0;
+    display: flex; flex-direction: column; gap: 4px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .pv-tok .tok-item {
+    display: grid; grid-template-columns: 10px 1fr auto;
+    align-items: center; gap: 6px;
+    color: var(--ink-dim);
+  }
+  .pv-tok .tok-item .sw {
+    width: 8px; height: 8px; border-radius: 2px;
+    background: var(--c);
+  }
+  .pv-tok .tok-item .nm { color: var(--ink); font-weight: 500; }
+  .pv-tok .tok-item .pct {
+    font-weight: 700; color: var(--blue-2);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; letter-spacing: 0;
+  }
+
   /* Screenshot preview (fills preview panel) */
   .pv-screen {
     width: 100%;
@@ -696,9 +747,53 @@
   }
   .pv-pay .amt { font-size: 18px; color: var(--blue-2); font-weight: 700; }
 
+  .pv-req {
+    align-self: flex-end;
+    background: linear-gradient(145deg, #0d1840, #060d24);
+    border: 1px solid var(--blue-edge);
+    border-radius: 16px;
+    padding: 10px 12px;
+    font-family: 'Barlow', sans-serif;
+    color: var(--ink);
+    display: flex; flex-direction: column; gap: 4px;
+    width: 80%;
+  }
+  .pv-req .req-head { display: flex; align-items: center; gap: 8px; }
+  .pv-req .req-icon {
+    width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(85,93,255,0.18); color: var(--blue-2);
+    display: grid; place-items: center;
+    font-size: 13px; line-height: 1;
+  }
+  .pv-req .req-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--ink-dim);
+  }
+  .pv-req .req-amt { display: flex; align-items: baseline; gap: 4px; margin-top: 2px; }
+  .pv-req .req-amt .num { font-size: 22px; font-weight: 800; font-family: 'Barlow Condensed', sans-serif; line-height: 1; }
+  .pv-req .req-amt .cur {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.14em;
+    color: var(--ink-dim); text-transform: uppercase;
+  }
+  .pv-req .req-from { font-size: 11px; color: var(--ink-dim); }
+  .pv-req .req-from b { color: var(--ink); font-weight: 600; }
+  .pv-req .req-note { font-size: 11px; color: var(--ink-dim); font-style: italic; }
+  .pv-req .req-foot {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .pv-req .req-foot .pending { color: #FFB547; }
+  .pv-req .req-foot .pending::before { content: '● '; }
+  .pv-req .req-foot .ts { color: var(--ink-mute); }
+
   /* Identity card preview */
   .pv-id {
-    width: 260px;
+    width: 100%;
+    max-width: 260px;
     background: linear-gradient(180deg, #0c1a44, #030b22);
     border: 1px solid var(--blue-edge);
     border-radius: 14px;
@@ -706,6 +801,7 @@
     display: flex; flex-direction: column; gap: 10px;
     position: relative;
     overflow: hidden;
+    box-sizing: border-box;
   }
   .pv-id::before {
     content: "";
@@ -736,6 +832,38 @@
     font-size: 8px; padding: 3px 7px; border-radius: 999px;
     background: var(--blue-soft); color: var(--blue-2);
     letter-spacing: 0.1em; text-transform: uppercase;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .pv-id .chip.verified { background: rgba(56, 224, 161, 0.12); color: var(--green); }
+  .pv-id .chip .check {
+    display: inline-grid; place-items: center;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--green); color: #05140e; font-size: 8px; font-weight: 900;
+    line-height: 1;
+  }
+  .pv-id .id-rating {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 6px;
+  }
+  .pv-id .id-rating .stars {
+    position: relative;
+    font-size: 14px;
+    letter-spacing: 1px;
+    line-height: 1;
+    color: rgba(255,255,255,0.12);
+    display: inline-flex;
+  }
+  .pv-id .id-rating .star.full { color: #FFB547; }
+  .pv-id .id-rating .star.half {
+    background: linear-gradient(90deg, #FFB547 50%, rgba(255,255,255,0.15) 50%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .pv-id .id-rating .rating-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 14px; color: var(--ink);
+    line-height: 1;
   }
 
   /* Multisig preview */
@@ -793,9 +921,12 @@
 
   /* Generic doc preview */
   .pv-doc {
-    width: 240px; padding: 16px;
+    width: 100%;
+    max-width: 260px;
+    padding: 16px;
     background: #0b1736; border: 1px solid var(--line); border-radius: 12px;
     display: flex; flex-direction: column; gap: 8px;
+    box-sizing: border-box;
   }
   .pv-doc .line {
     height: 6px; background: rgba(255,255,255,0.08); border-radius: 3px;
@@ -836,7 +967,9 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
-    width: 260px;
+    width: 100%;
+    max-width: 260px;
+    box-sizing: border-box;
   }
   .pv-mkt .card {
     background: #0c1a44; border: 1px solid var(--line); border-radius: 10px;
@@ -858,12 +991,14 @@
 
   /* Trading preview */
   .pv-trade {
-    width: 280px;
+    width: 100%;
+    max-width: 260px;
     padding: 12px;
     background: #0b1736;
     border: 1px solid var(--line);
     border-radius: 12px;
     display: flex; flex-direction: column; gap: 8px;
+    box-sizing: border-box;
   }
   .pv-trade .hd { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; color: var(--ink-mute); text-transform: uppercase; }
   .pv-trade .price { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 24px; color: var(--green); }
@@ -873,9 +1008,11 @@
 
   /* Token preview */
   .pv-token {
-    width: 240px;
+    width: 100%;
+    max-width: 260px;
     display: flex; flex-direction: column; align-items: center;
     gap: 12px;
+    box-sizing: border-box;
   }
   .pv-token .coin {
     width: 100px; height: 100px; border-radius: 50%;
@@ -898,11 +1035,80 @@
     font-size: 9px; letter-spacing: 0.24em;
     color: var(--red); text-transform: uppercase;
   }
+  .pv-token .tge-stats {
+    width: 100%; display: flex; flex-direction: column; gap: 6px;
+    margin-top: 6px;
+  }
+  .pv-token .tge-row {
+    display: grid; grid-template-columns: 10px 1fr auto;
+    align-items: center; gap: 8px;
+    padding: 7px 10px;
+    background: rgba(255,85,88,0.06);
+    border: 1px solid rgba(255,85,88,0.25);
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase;
+  }
+  .pv-token .tge-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+  }
+  .pv-token .tge-nm { color: var(--ink); font-weight: 500; }
+  .pv-token .tge-val { color: var(--ink-dim); font-weight: 400; }
+
+  /* Business tokenization preview */
+  .pv-biz {
+    width: 100%; max-width: 260px;
+    background: linear-gradient(180deg, #0c1a44, #060d24);
+    border: 1px solid var(--blue-edge);
+    border-radius: 12px;
+    padding: 14px;
+    display: flex; flex-direction: column; gap: 10px;
+    box-sizing: border-box;
+  }
+  .pv-biz .biz-head { display: flex; gap: 10px; align-items: center; }
+  .pv-biz .biz-logo {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--blue), var(--blue-2));
+    display: grid; place-items: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; color: white; font-size: 14px;
+    letter-spacing: 0.04em;
+  }
+  .pv-biz .biz-nm {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700; font-size: 14px; line-height: 1.2;
+  }
+  .pv-biz .biz-sub {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-dim); margin-top: 2px;
+  }
+  .pv-biz .biz-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pv-biz .biz-stat {
+    background: #071335; border: 1px solid var(--line);
+    border-radius: 8px; padding: 8px 10px;
+  }
+  .pv-biz .biz-stat .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .pv-biz .biz-stat .val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800; font-size: 18px; color: var(--ink);
+    margin-top: 2px;
+  }
+  .pv-biz .biz-stat .val.accent { color: var(--blue-2); }
+  .pv-biz .biz-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
 
   /* Launchpad preview */
   .pv-lpad {
-    width: 260px;
+    width: 100%;
+    max-width: 260px;
     display: flex; flex-direction: column; gap: 8px;
+    box-sizing: border-box;
   }
   .pv-lpad .proj {
     padding: 10px; background: #0c1a44; border: 1px solid var(--line);
@@ -926,8 +1132,10 @@
 
   /* Index/strategies preview */
   .pv-idx {
-    width: 260px;
+    width: 100%;
+    max-width: 260px;
     display: flex; flex-direction: column; gap: 6px;
+    box-sizing: border-box;
   }
   .pv-idx .row {
     display: grid; grid-template-columns: 1fr 60px 48px;
@@ -941,6 +1149,42 @@
   .pv-idx .row .pc { font-family: 'JetBrains Mono', monospace; font-size: 10px; text-align: right; }
   .pv-idx .row .pc.up { color: var(--green); }
   .pv-idx .row .pc.dn { color: var(--red); }
+
+  /* Portfolio variant: 4 columns — coin, price, holdings, P&L */
+  .pv-idx.pv-port .head,
+  .pv-idx.pv-port .row {
+    display: grid;
+    grid-template-columns: 44px 1fr 1fr 1fr;
+    gap: 6px; align-items: center;
+    padding: 7px 8px;
+    font-size: 11px;
+  }
+  .pv-idx.pv-port .head {
+    background: transparent; border: none; padding-bottom: 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-mute);
+  }
+  .pv-idx.pv-port .head span { text-align: right; }
+  .pv-idx.pv-port .head span:first-child { text-align: left; }
+  .pv-idx.pv-port .row .tk {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 10px; color: var(--ink);
+  }
+  .pv-idx.pv-port .row .tk .coin {
+    width: 16px; height: 16px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 9px; font-weight: 700; color: #fff;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .pv-idx.pv-port .row .px,
+  .pv-idx.pv-port .row .hold,
+  .pv-idx.pv-port .row .pnl {
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    text-align: right; font-size: 13px;
+  }
+  .pv-idx.pv-port .row .pnl.up { color: var(--green); }
+  .pv-idx.pv-port .row .pnl.dn { color: var(--red); }
 
   /* ---------- FOOTER MARK ---------- */
   .foot {
@@ -1288,9 +1532,15 @@
             <div class="preview">
               <div class="p-chrome"><span>chat · #builders</span><span class="dots"><i></i><i></i><i></i></span></div>
               <div class="pv-chat">
-                <div class="bubble them">hey, can you send me money for my work?</div>
-                <div class="bubble me">sending now</div>
-                <div class="pv-pay"><span>Sent</span> <span class="amt">25 USDC</span></div>
+                <div class="bubble me">Hey, can you send me money for the consultation?</div>
+                <div class="pv-req">
+                  <div class="req-head"><div class="req-icon">↙</div><div class="req-label">Requested</div></div>
+                  <div class="req-amt"><span class="num">20</span><span class="cur">USDC</span></div>
+                  <div class="req-from">from <b>alice.sol</b></div>
+                  <div class="req-note">"Consultation"</div>
+                  <div class="req-foot"><span class="pending">Pending</span><span class="ts">13:13</span></div>
+                </div>
+                <div class="bubble them">I'm on it</div>
               </div>
             </div>
           </div>
@@ -1333,14 +1583,20 @@
                 <div style="display:flex; gap:10px; align-items:center;">
                   <div class="avatar">S</div>
                   <div>
-                    <div class="uname">@solana.sol</div>
+                    <div class="uname">@sol_trader</div>
                     <div class="addr">So11111…111112</div>
                   </div>
                 </div>
+                <div class="id-rating">
+                  <span class="stars" aria-label="4.8 of 5">
+                    <span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star full">★</span><span class="star half">★</span>
+                  </span>
+                  <span class="rating-num">4.8</span>
+                </div>
                 <div class="chips">
-                  <span class="chip">Verified</span>
+                  <span class="chip verified"><span class="check">✓</span>Verified</span>
                   <span class="chip">Builder</span>
-                  <span class="chip">Rep · 4.8</span>
+                  <span class="chip">Solius ID</span>
                 </div>
               </div>
             </div>
@@ -1403,16 +1659,29 @@
               </div>
             </div>
             <div class="preview">
-              <div class="p-chrome"><span>whitepaper.pdf</span><span class="dots"><i></i><i></i><i></i></span></div>
-              <div class="pv-doc">
-                <div class="line hl s"></div>
-                <div class="line l"></div>
-                <div class="line m"></div>
-                <div class="line l"></div>
-                <div class="line m"></div>
-                <div class="line s"></div>
-                <div class="line hl m"></div>
-                <div class="line l"></div>
+              <div class="p-chrome"><span>tokenomics.pdf</span><span class="dots"><i></i><i></i><i></i></span></div>
+              <div class="pv-tok">
+                <div class="tok-chart">
+                  <svg viewBox="0 0 100 100" aria-hidden="true">
+                    <g stroke-width="14" fill="none">
+                      <circle cx="50" cy="50" r="40" stroke="#555DFF" stroke-dasharray="50.27 201.06" stroke-dashoffset="0"/>
+                      <circle cx="50" cy="50" r="40" stroke="#8F95FF" stroke-dasharray="37.70 213.63" stroke-dashoffset="-50.27"/>
+                      <circle cx="50" cy="50" r="40" stroke="#38E0A1" stroke-dasharray="75.40 175.93" stroke-dashoffset="-87.97"/>
+                      <circle cx="50" cy="50" r="40" stroke="#6E76FF" stroke-dasharray="62.83 188.50" stroke-dashoffset="-163.37"/>
+                      <circle cx="50" cy="50" r="40" stroke="#3F47E0" stroke-dasharray="25.13 226.20" stroke-dashoffset="-226.20"/>
+                    </g>
+                  </svg>
+                  <div class="tok-center">
+                    <div class="tok-num">1<span>B</span></div>
+                  </div>
+                </div>
+                <div class="tok-legend">
+                  <div class="tok-item"><span class="sw" style="--c:#38E0A1"></span><span class="nm">Community</span><span class="pct">30%</span></div>
+                  <div class="tok-item"><span class="sw" style="--c:#6E76FF"></span><span class="nm">Ecosystem</span><span class="pct">25%</span></div>
+                  <div class="tok-item"><span class="sw" style="--c:#555DFF"></span><span class="nm">Team</span><span class="pct">20%</span></div>
+                  <div class="tok-item"><span class="sw" style="--c:#8F95FF"></span><span class="nm">Investors</span><span class="pct">15%</span></div>
+                  <div class="tok-item"><span class="sw" style="--c:#3F47E0"></span><span class="nm">Reserve</span><span class="pct">10%</span></div>
+                </div>
               </div>
             </div>
           </div>
@@ -1484,10 +1753,11 @@
             </div>
             <div class="preview">
               <div class="p-chrome"><span>portfolio · 3 wallets</span><span class="dots"><i></i><i></i><i></i></span></div>
-              <div class="pv-idx">
-                <div class="row"><div class="tk">SOL</div><div class="al">48.2</div><div class="pc up">+2.4%</div></div>
-                <div class="row"><div class="tk">USDC</div><div class="al">12.0k</div><div class="pc">0.0%</div></div>
-                <div class="row"><div class="tk">JUP</div><div class="al">9,820</div><div class="pc dn">−1.1%</div></div>
+              <div class="pv-idx pv-port">
+                <div class="head"><span>Coin</span><span>Price</span><span>Holdings</span><span>P&amp;L</span></div>
+                <div class="row"><div class="tk"><span class="coin" style="background:#9945FF">S</span>SOL</div><div class="px">$184</div><div class="hold">48.2</div><div class="pnl up">+14%</div></div>
+                <div class="row"><div class="tk"><span class="coin" style="background:#FFA94D">W</span>WIF</div><div class="px">$2.15</div><div class="hold">4,200</div><div class="pnl up">+38%</div></div>
+                <div class="row"><div class="tk"><span class="coin" style="background:#627EEA">E</span>ETH</div><div class="px">$3,480</div><div class="hold">3.1</div><div class="pnl dn">−2%</div></div>
               </div>
             </div>
           </div>
@@ -1729,6 +1999,11 @@
             <div class="pv-token">
               <div class="coin"><div class="sym">$S</div></div>
               <div class="cap">Total supply · 1,000,000,000</div>
+              <div class="tge-stats">
+                <div class="tge-row"><span class="tge-dot live"></span><span class="tge-nm">Staking</span><span class="tge-val">Live · 9% APY</span></div>
+                <div class="tge-row"><span class="tge-dot live"></span><span class="tge-nm">Vesting</span><span class="tge-val">24 months</span></div>
+                <div class="tge-row"><span class="tge-dot live"></span><span class="tge-nm">Distribution</span><span class="tge-val">Day 1</span></div>
+              </div>
             </div>
           </div>
         </div>
@@ -1797,14 +2072,22 @@
           </div>
           <div class="preview">
             <div class="p-chrome"><span>business · tokenize</span><span class="dots"><i></i><i></i><i></i></span></div>
-            <div class="pv-doc">
-              <div class="line hl l"></div>
-              <div class="line m"></div>
-              <div class="line l"></div>
-              <div style="display:flex; gap:6px; margin-top:4px; flex-wrap:wrap;">
-                <span class="f-tag on">1M shares</span>
-                <span class="f-tag">30% rev-share</span>
-                <span class="f-tag">KYC'd</span>
+            <div class="pv-biz">
+              <div class="biz-head">
+                <div class="biz-logo">YP</div>
+                <div class="biz-meta">
+                  <div class="biz-nm">Your New Project</div>
+                  <div class="biz-sub">Revenue share · On-chain</div>
+                </div>
+              </div>
+              <div class="biz-stats">
+                <div class="biz-stat"><div class="label">Shares</div><div class="val">1,000,000</div></div>
+                <div class="biz-stat"><div class="label">Rev share</div><div class="val accent">30%</div></div>
+              </div>
+              <div class="biz-chips">
+                <span class="f-tag on">Smart contract</span>
+                <span class="f-tag">KYC</span>
+                <span class="f-tag">Auto-payout</span>
               </div>
             </div>
           </div>
