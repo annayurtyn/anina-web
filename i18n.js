@@ -21,7 +21,7 @@ var TRANSLATIONS = {
       label: '— O mně',
       h2: 'POHYB<br/><em>PODLOŽENÝ</em><br/>VĚDOU',
       p1: 'Nejsem trenérka, která tě postaví ke stroji a bude počítat opakování. Každému klientovi se věnuji na sto procent a všímám si i těch nejmenších detailů v pohybu a dysbalancích těla.',
-      p2: 'Vystudovala jsem medicínu, pracovala jako zdravotní sestra a 6 let působila jako fyzioterapeutka a trenérka na Ukrajině. Nyní žiji v Brně a pracuji jako komplexní osobní trenérka — kombinující medicínské znalosti, fyzioterapii a silový trénink.',
+      p2: 'Mám lékařské vzdělání záchranáře a univerzitní diplom z fyzioterapie a ergoterapie. Na Ukrajině jsem 3 roky působila jako trenérka pro své klienty a navíc jsem pomáhala lidem s handicapem znovu fungovat v běžném životě.',
       cta: 'Kontaktovat —'
     },
     testimonials: {
@@ -124,7 +124,7 @@ var TRANSLATIONS = {
       label: '— Про мене',
       h2: 'РУХ<br/><em>НА ОСНОВІ</em><br/>НАУКИ',
       p1: 'Я не тренер, який поставить тебе до тренажера і рахуватиме повтори. Кожному клієнту я приділяю сто відсотків і помічаю навіть найдрібніші деталі в русі та дисбалансах тіла.',
-      p2: 'Я закінчила медичний університет, працювала медсестрою і 6 років була фізіотерапевтом та тренером в Україні. Зараз живу в Брно і працюю як комплексний персональний тренер — поєднуючи медичні знання, фізіотерапію та силові тренування.',
+      p2: 'Я маю медичну освіту фельдшера та університетський диплом з фізіотерапії та ерготерапії. В Україні я 3 роки працювала тренером зі своїми клієнтами і водночас допомагала людям з інвалідністю повернутися до повноцінного життя.',
       cta: 'Написати —'
     },
     testimonials: {
@@ -227,7 +227,7 @@ var TRANSLATIONS = {
       label: '— About me',
       h2: 'MOVEMENT<br/><em>BACKED</em><br/>BY SCIENCE',
       p1: 'I\'m not a trainer who puts you on a machine and counts reps. I give every client 100% of my attention and notice even the smallest details in movement patterns and muscle imbalances.',
-      p2: 'I studied medicine, worked as a nurse, and spent 6 years as a physiotherapist and trainer in Ukraine. I now live in Brno and work as a comprehensive personal trainer — combining medical knowledge, physiotherapy and strength training.',
+      p2: 'I have a paramedic medical education and a university degree in physiotherapy and occupational therapy. In Ukraine, I spent 3 years training clients while also helping people with disabilities regain their independence in everyday life.',
       cta: 'Get in touch —'
     },
     testimonials: {
