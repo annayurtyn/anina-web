@@ -57,7 +57,7 @@ var TRANSLATIONS = {
       t3title: 'Láká tě vzpírání nebo CrossFit?',
       t3desc: 'Obojí jsou technicky náročné disciplíny, kde špatný start rovná se zranění. Naučím tě základy správně — od prvního pohybu až po první výsledky.',
       t4title: 'Brzdí tě staré zranění nebo dysbalance?',
-      t4desc: '6 let fyzioterapie na Ukrajině mě naučilo číst tělo jinak než ostatní trenéři. Vidím, co ostatní přehlíží — a stavím trénink kolem tvých omezení, ne navzdory nim.'
+      t4desc: 'Díky tomu, že se těmto sportům věnuji 6 let a 3 roky jsem trénovala své klienty, vidím co ostatní nevidí.'
     },
     tz: {
       label: '— Jak to funguje',
@@ -160,7 +160,7 @@ var TRANSLATIONS = {
       t3title: 'Тебе цікавить важка атлетика або CrossFit?',
       t3desc: 'Обидві дисципліни технічно складні — неправильний старт означає травму. Я навчу тебе основам правильно — від першого руху до перших результатів.',
       t4title: 'Стара травма або дисбаланс гальмують прогрес?',
-      t4desc: '6 років фізіотерапії в Україні навчили мене читати тіло інакше, ніж інші тренери. Я бачу те, що інші пропускають — і будую тренування навколо твоїх обмежень, а не всупереч їм.'
+      t4desc: 'Завдяки тому, що я займаюся цими видами спорту 6 років і 3 роки треную своїх клієнтів, я бачу те, чого інші не бачать.'
     },
     tz: {
       label: '— Як це працює',
@@ -263,7 +263,7 @@ var TRANSLATIONS = {
       t3title: 'Interested in weightlifting or CrossFit?',
       t3desc: 'Both are technically demanding — a bad start means injury. I\'ll teach you the fundamentals correctly, from the very first movement to the first results.',
       t4title: 'Old injury or imbalance holding you back?',
-      t4desc: '6 years of physiotherapy in Ukraine taught me to read the body differently to other trainers. I see what others miss — and build training around your limitations, not despite them.'
+      t4desc: 'Having been dedicated to these sports for 6 years and training my clients for 3 years, I see what others don\'t.'
     },
     tz: {
       label: '— How it works',
