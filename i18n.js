@@ -14,7 +14,7 @@ var TRANSLATIONS = {
       btn1: 'Chci začít trénovat —',
       btn2: 'Více o mně ↓',
       stat1num: '50+', stat1label: 'Klientů',
-      stat2num: '6 let', stat2label: 'Fyzioterapie',
+      stat2num: '3 roky', stat2label: 'zkušeností',
       stat3num: '100%', stat3label: 'Individuální přístup'
     },
     about: {
@@ -117,7 +117,7 @@ var TRANSLATIONS = {
       btn1: 'Хочу тренуватися —',
       btn2: 'Більше про мене ↓',
       stat1num: '50+', stat1label: 'Клієнтів',
-      stat2num: '6 років', stat2label: 'Фізіотерапія',
+      stat2num: '3 роки', stat2label: 'досвіду',
       stat3num: '100%', stat3label: 'Індивідуальний підхід'
     },
     about: {
@@ -220,7 +220,7 @@ var TRANSLATIONS = {
       btn1: 'I want to start —',
       btn2: 'More about me ↓',
       stat1num: '50+', stat1label: 'Clients',
-      stat2num: '6 years', stat2label: 'Physiotherapy',
+      stat2num: '3 years', stat2label: 'of experience',
       stat3num: '100%', stat3label: 'Individual approach'
     },
     about: {
