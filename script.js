@@ -54,8 +54,15 @@ function slideStep() {
   return s.offsetWidth + 20;
 }
 
+function visibleSlides() {
+  var wrapW = track.parentElement.offsetWidth;
+  var step = slideStep();
+  if (step === 0) return 1;
+  return Math.max(1, Math.round(wrapW / step));
+}
+
 function maxIndex() {
-  return total - 3; // can scroll until last 3 are showing
+  return Math.max(0, total - visibleSlides());
 }
 
 function buildDots() {
