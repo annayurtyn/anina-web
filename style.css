@@ -676,6 +676,7 @@ a {
 .community-screens {
   position: relative;
   height: 520px;
+  overflow: hidden;
 }
 
 .cs-card {
@@ -692,7 +693,7 @@ a {
 }
 
 .cs-card--1 {
-  width: 58%;
+  width: 46%;
   aspect-ratio: 9/16;
   top: 0;
   left: 0;
