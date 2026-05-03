@@ -33,8 +33,6 @@ var TRANSLATIONS = {
       s1n: 'Kristina B.',
       s2q: '„S Aninkou jsem poprvé viděla skutečný pokrok, a to po třech trenérech, kteří mi nepomohli. Přizpůsobila trénink přesně mým možnostem a moje chronicky nemocné koleno přestalo bolet úplně. Moje tělo se cítí zdravěji než kdykoli za poslední roky."',
       s2n: 'Viktoriya D.',
-      s3q: '„Konečně trenérka, která skutečně rozumí pohybu. Moje záda jsou poprvé za roky bez problémů."',
-      s3n: 'Lucie V.'
     },
     community: {
       label: '— Moje komunita',
@@ -136,8 +134,6 @@ var TRANSLATIONS = {
       s1n: 'Kristina B.',
       s2q: '«З Анічкою я вперше побачила реальний прогрес, і це після трьох тренерів, які мені не допомогли. Вона підлаштувала тренування саме під мене і моє хворе коліно перестало мене турбувати взагалі. Моє тіло почувається набагато здоровішим і комфортнішим ніж 2-3 роки тому.»',
       s2n: 'Viktoriya D.',
-      s3q: '«Нарешті тренер, який справді розуміє рух. Моя спина вперше за роки без проблем.»',
-      s3n: 'Lucie V.'
     },
     community: {
       label: '— Моя спільнота',
@@ -239,8 +235,6 @@ var TRANSLATIONS = {
       s1n: 'Kristina B.',
       s2q: '"With Aninka I finally saw real progress, after three previous trainers who couldn\'t help me. She tailored training to my limits and my chronically bad knee stopped hurting completely. My body feels healthier and more comfortable than it has in years."',
       s2n: 'Viktoriya D.',
-      s3q: '"Finally a trainer who truly understands movement. My back has been pain-free for the first time in years."',
-      s3n: 'Lucie V.'
     },
     community: {
       label: '— My community',
