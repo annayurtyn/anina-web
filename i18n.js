@@ -91,6 +91,12 @@ var TRANSLATIONS = {
       m2title: 'Výživový plán', m2desc: 'Jídelní plán, nákupní seznam,<br/>kalorické konzultace',
       m2price: '1 500 Kč <span class="pc-per">jednorázově</span>'
     },
+    dq: {
+      label: '— Dotazník',
+      h2: 'VSTUPNÍ<br/><em>DOTAZNÍK</em>',
+      p: 'Tady vyplníš informace, které potřebuju před vstupní konzultací a začátkem spolupráce.',
+      btn: 'Vyplnit dotazník →'
+    },
     contact: {
       label: '— Kontakt',
       h2: 'JDEME<br/><em>DO TOHO?</em>',
@@ -192,6 +198,12 @@ var TRANSLATIONS = {
       m2title: 'План харчування', m2desc: 'План харчування, список покупок,<br/>калорійні консультації',
       m2price: '1 500 Kč <span class="pc-per">разово</span>'
     },
+    dq: {
+      label: '— Анкета',
+      h2: 'ВСТУПНА<br/><em>АНКЕТА</em>',
+      p: 'Тут ти заповниш інформацію, яку мені потрібно знати перед першою консультацією та початком співпраці.',
+      btn: 'Заповнити анкету →'
+    },
     contact: {
       label: '— Контакт',
       h2: 'ПОЧИНАЄМО<br/><em>ЦЕ?</em>',
@@ -292,6 +304,12 @@ var TRANSLATIONS = {
       m1price: '9 300 Kč <span class="pc-per">/&nbsp;month</span>',
       m2title: 'Nutrition plan', m2desc: 'Meal plan, shopping list,<br/>calorie consultations',
       m2price: '1 500 Kč <span class="pc-per">one-time</span>'
+    },
+    dq: {
+      label: '— Questionnaire',
+      h2: 'INTAKE<br/><em>FORM</em>',
+      p: 'Fill in the information I need before our initial consultation and the start of our work together.',
+      btn: 'Fill in the form →'
     },
     contact: {
       label: '— Contact',

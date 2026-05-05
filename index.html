@@ -372,6 +372,48 @@
     </div>
   </section>
 
+  <!-- DOTAZNÍK -->
+  <section class="dq-section" id="dotaznik">
+    <div class="container">
+      <div class="dq-section-inner">
+        <div class="dq-section-text">
+          <span class="dq-section-label" data-i18n="dq.label">— Dotazník</span>
+          <h2 class="dq-section-heading" data-i18n="dq.h2">VSTUPNÍ<br/><em>DOTAZNÍK</em></h2>
+          <p class="dq-section-desc" data-i18n="dq.p">Tady vyplníš informace, které potřebuju před vstupní konzultací a začátkem spolupráce.</p>
+        </div>
+        <div class="dq-section-action">
+          <button class="btn dq-open-btn" onclick="openDotaznik()" data-i18n="dq.btn">Vyplnit dotazník →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOTAZNÍK POPUP -->
+  <div class="dq-overlay" id="dqOverlay">
+    <div class="dq-modal">
+      <button class="dq-modal-close" onclick="closeDotaznik()" aria-label="Zavřít">✕</button>
+      <div class="dq-modal-header">
+        <div class="dq-modal-logo">ANINKA</div>
+        <div class="dq-modal-header-right">
+          <div class="dq-lang-switcher">
+            <button class="dq-lang-btn active" data-dqlang="cs" onclick="dqSetLang('cs')">🇨🇿 CZ</button>
+            <button class="dq-lang-btn" data-dqlang="uk" onclick="dqSetLang('uk')">🇺🇦 UA</button>
+          </div>
+          <div class="dq-step-counter" id="dqStepCounter">1 / 6</div>
+        </div>
+      </div>
+      <div class="dq-progress-bar"><div class="dq-progress-fill" id="dqProgressFill" style="width:16.66%"></div></div>
+      <div class="dq-dots" id="dqDots"></div>
+      <div class="dq-card" id="dqCard"></div>
+      <div class="dq-success" id="dqSuccess" style="display:none">
+        <div class="dq-done-icon">🌸</div>
+        <div class="dq-done-title">Odesláno!</div>
+        <div class="dq-done-sub">Dotazník byl úspěšně odeslán. Ozvu se ti co nejdřív!</div>
+        <button class="dq-btn-close-done" onclick="closeDotaznik()">Zavřít</button>
+      </div>
+    </div>
+  </div>
+
   <!-- KONTAKT -->
   <section class="contact" id="kontakt">
     <div class="container">
@@ -432,5 +474,6 @@
 
   <script src="i18n.js"></script>
   <script src="script.js"></script>
+  <script src="dotaznik.js"></script>
 </body>
 </html>
