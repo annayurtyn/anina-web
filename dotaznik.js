@@ -272,7 +272,7 @@ function dqBuildEmailBody() {
   var lines = ['Datum: ' + date, ''];
 
   steps.forEach(function(step) {
-    lines.push('=== ' + step.icon + ' ' + step.title.toUpperCase() + ' ===');
+    lines.push('=== ' + step.title.toUpperCase() + ' ===');
     step.fields.forEach(function(f) {
       var val = dqFormData[f.name];
       var display = Array.isArray(val) ? val.join(', ') : (val || '—');
@@ -285,43 +285,13 @@ function dqBuildEmailBody() {
 }
 
 function dqFinish() {
-  if (dqSending) return;
-  dqSending = true;
   var t = DQ_T[dqLang];
-  var btn = document.getElementById('dqSendBtn');
-  if (btn) { btn.textContent = t.sending; btn.disabled = true; }
-
   var name = dqFormData.name || 'Klient';
-  var subject = t.emailSubjectPrefix + ' — ' + name;
-  var body = dqBuildEmailBody();
-
-  fetch('https://formsubmit.co/ajax/filipnemi1@gmail.com', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-    body: JSON.stringify({
-      _subject: subject,
-      _captcha: 'false',
-      _template: 'box',
-      Jméno: name,
-      Dotazník: body
-    })
-  })
-  .then(function(res) { return res.json(); })
-  .then(function(data) {
-    dqSending = false;
-    if (data.success === 'true' || data.success === true) {
-      dqShowSuccess();
-    } else {
-      dqSending = false;
-      if (btn) { btn.textContent = t.send; btn.disabled = false; }
-      alert(t.errorMsg);
-    }
-  })
-  .catch(function() {
-    dqSending = false;
-    if (btn) { btn.textContent = t.send; btn.disabled = false; }
-    alert(t.errorMsg);
-  });
+  var subject = encodeURIComponent(t.emailSubjectPrefix + ' — ' + name);
+  var body = encodeURIComponent(dqBuildEmailBody());
+  var mailto = 'mailto:filipnemi1@gmail.com?subject=' + subject + '&body=' + body;
+  window.location.href = mailto;
+  dqShowSuccess();
 }
 
 function dqShowSuccess() {
