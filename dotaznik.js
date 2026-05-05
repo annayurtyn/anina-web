@@ -36,6 +36,7 @@ var DQ_STEPS = {
   cs: [
     { title: 'Osobní údaje', icon: '👤', fields: [
       { name: 'name',  label: 'Jméno a příjmení', type: 'text',   placeholder: 'Např. Jana Nováková' },
+      { name: 'email', label: 'E-mail',           type: 'email',  placeholder: 'tvuj@email.cz' },
       { name: 'age',   label: 'Věk',              type: 'number', placeholder: '27' },
       { name: 'phone', label: 'Telefon',          type: 'tel',    placeholder: '+420...' },
       { name: 'city',  label: 'Město',            type: 'text',   placeholder: 'Brno, Praha...' },
@@ -76,6 +77,7 @@ var DQ_STEPS = {
   uk: [
     { title: 'Особисті дані', icon: '👤', fields: [
       { name: 'name',  label: "Ім'я та прізвище", type: 'text',   placeholder: 'Наприклад: Марія Коваль' },
+      { name: 'email', label: 'E-mail',           type: 'email',  placeholder: 'твій@email.com' },
       { name: 'age',   label: 'Вік',              type: 'number', placeholder: '27' },
       { name: 'phone', label: 'Телефон',          type: 'tel',    placeholder: '+380 або +420...' },
       { name: 'city',  label: 'Місто',            type: 'text',   placeholder: 'Брно, Прага...' },
@@ -116,8 +118,8 @@ var DQ_STEPS = {
 };
 
 var DQ_LABELS = {
-  cs: { name: 'Jméno a příjmení', age: 'Věk', phone: 'Telefon', city: 'Město', injuries: 'Zranění / bolesti', conditions: 'Diagnózy', medications: 'Pravidelné léky', surgery: 'Operace za 2 roky', activity: 'Aktivita', experience: 'Zkušenosti', sleep: 'Spánek', stress: 'Stres', diet: 'Stravování', water: 'Voda', restrictions: 'Omezení / alergie', mainGoal: 'Cíle tréninku', deadline: 'Požadovaný termín', sessions: 'Tréninků/týden', motivation: 'Motivace', liked: 'Co se líbí', disliked: 'Čemu se vyhnout', trainer: 'Styl trenéra', extra: 'Další informace' },
-  uk: { name: "Ім'я та прізвище", age: 'Вік', phone: 'Телефон', city: 'Місто', injuries: 'Травми / болі', conditions: 'Діагнози', medications: 'Ліки постійно', surgery: 'Операції за 2 роки', activity: 'Активність', experience: 'Досвід тренувань', sleep: 'Сон', stress: 'Стрес', diet: 'Харчування', water: 'Вода', restrictions: 'Обмеження / алергії', mainGoal: 'Цілі тренувань', deadline: 'Бажаний термін', sessions: 'Тренувань/тиждень', motivation: 'Мотивація', liked: 'Що подобається', disliked: 'Уникати', trainer: 'Стиль тренера', extra: 'Додатково' }
+  cs: { name: 'Jméno a příjmení', email: 'E-mail', age: 'Věk', phone: 'Telefon', city: 'Město', injuries: 'Zranění / bolesti', conditions: 'Diagnózy', medications: 'Pravidelné léky', surgery: 'Operace za 2 roky', activity: 'Aktivita', experience: 'Zkušenosti', sleep: 'Spánek', stress: 'Stres', diet: 'Stravování', water: 'Voda', restrictions: 'Omezení / alergie', mainGoal: 'Cíle tréninku', deadline: 'Požadovaný termín', sessions: 'Tréninků/týden', motivation: 'Motivace', liked: 'Co se líbí', disliked: 'Čemu se vyhnout', trainer: 'Styl trenéra', extra: 'Další informace' },
+  uk: { name: "Ім'я та прізвище", email: 'E-mail', age: 'Вік', phone: 'Телефон', city: 'Місто', injuries: 'Травми / болі', conditions: 'Діагнози', medications: 'Ліки постійно', surgery: 'Операції за 2 роки', activity: 'Активність', experience: 'Досвід тренувань', sleep: 'Сон', stress: 'Стрес', diet: 'Харчування', water: 'Вода', restrictions: 'Обмеження / алергії', mainGoal: 'Цілі тренувань', deadline: 'Бажаний термін', sessions: 'Тренувань/тиждень', motivation: 'Мотивація', liked: 'Що подобається', disliked: 'Уникати', trainer: 'Стиль тренера', extra: 'Додатково' }
 };
 
 // ── OPEN / CLOSE ─────────────────────────────────────────────────────────────
@@ -285,13 +287,43 @@ function dqBuildEmailBody() {
 }
 
 function dqFinish() {
+  if (dqSending) return;
+  dqSending = true;
   var t = DQ_T[dqLang];
+  var btn = document.getElementById('dqSendBtn');
+  if (btn) { btn.textContent = t.sending; btn.disabled = true; }
+
   var name = dqFormData.name || 'Klient';
-  var subject = encodeURIComponent(t.emailSubjectPrefix + ' — ' + name);
-  var body = encodeURIComponent(dqBuildEmailBody());
-  var mailto = 'mailto:filipnemi1@gmail.com?subject=' + subject + '&body=' + body;
-  window.location.href = mailto;
-  dqShowSuccess();
+  var subject = t.emailSubjectPrefix + ' — ' + name;
+  var body = dqBuildEmailBody();
+
+  fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({
+      access_key: '5155d7e0-f3af-4e8c-8699-c9532bd93f8f',
+      subject: subject,
+      from_name: name,
+      email: dqFormData.email || '',
+      message: body,
+      botcheck: ''
+    })
+  })
+  .then(function(res) { return res.json(); })
+  .then(function(data) {
+    dqSending = false;
+    if (data.success) {
+      dqShowSuccess();
+    } else {
+      if (btn) { btn.textContent = t.send; btn.disabled = false; }
+      alert(t.errorMsg);
+    }
+  })
+  .catch(function() {
+    dqSending = false;
+    if (btn) { btn.textContent = t.send; btn.disabled = false; }
+    alert(t.errorMsg);
+  });
 }
 
 function dqShowSuccess() {
