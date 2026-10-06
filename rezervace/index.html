@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2D383E" />
+  <title>Rezervace tréninku · Aninka</title>
+  <link rel="stylesheet" href="assets/app.css" />
+</head>
+<body>
+
+  <!-- PŘIHLÁŠENÍ -->
+  <main class="wrap wrap--narrow" id="authView" hidden>
+    <header class="top">
+      <div class="top-brand">ANIN<span>KA</span></div>
+    </header>
+
+    <span class="label">— Rezervace</span>
+    <h1 style="margin-bottom:22px">TVŮJ<br/><em>TRÉNINK</em></h1>
+
+    <div id="authMsg"></div>
+
+    <section id="loginBox">
+      <p class="sub" style="margin-bottom:18px">Zadej telefon, pod kterým tě Aninka vede.</p>
+      <form id="loginForm">
+        <div class="field">
+          <label for="loginPhone">Telefon <span style="text-transform:none;letter-spacing:0">(bez předvolby)</span></label>
+          <input id="loginPhone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="777123456" required />
+        </div>
+        <button class="btn btn--full" type="submit">Pokračovat</button>
+      </form>
+      <p style="margin-top:18px;text-align:center">
+        <button class="link" type="button" id="toRegister">Jsem tu poprvé — registrovat se</button>
+      </p>
+    </section>
+
+    <section id="registerBox" hidden>
+      <p class="sub" style="margin-bottom:18px">Stačí jednou. Příště tě to přihlásí samo.</p>
+      <form id="registerForm">
+        <div class="row">
+          <div class="field">
+            <label for="regFirst">Jméno</label>
+            <input id="regFirst" type="text" autocomplete="given-name" required />
+          </div>
+          <div class="field">
+            <label for="regLast">Příjmení</label>
+            <input id="regLast" type="text" autocomplete="family-name" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="regPhone">Telefon <span style="text-transform:none;letter-spacing:0">(bez předvolby)</span></label>
+          <input id="regPhone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="777123456" required />
+        </div>
+        <div class="field">
+          <label for="regEmail">E-mail <span style="text-transform:none;letter-spacing:0">(kam chodí pozvánka do kalendáře)</span></label>
+          <input id="regEmail" type="email" autocomplete="email" required />
+        </div>
+        <button class="btn btn--full" type="submit">Zaregistrovat</button>
+      </form>
+      <p style="margin-top:18px;text-align:center">
+        <button class="link" type="button" id="toLogin">Už mám účet</button>
+      </p>
+    </section>
+  </main>
+
+  <!-- APLIKACE -->
+  <main class="wrap" id="appView" hidden>
+    <header class="top">
+      <div class="top-brand">ANIN<span>KA</span></div>
+      <div class="top-meta">
+        <div id="whoName"></div>
+        <button class="link" type="button" id="logout">Odhlásit</button>
+      </div>
+    </header>
+
+    <div id="appMsg"></div>
+
+    <section class="card" id="pkgCard">
+      <div class="card-head">
+        <h2>Tvůj balíček</h2>
+      </div>
+      <div id="pkgBody"></div>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Nadcházející tréninky</h2>
+      </div>
+      <ul class="list" id="myBookings"></ul>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Zarezervovat termín</h2>
+      </div>
+
+      <div class="cal-nav">
+        <button class="btn btn--ghost btn--small" type="button" id="prevMonth">←</button>
+        <span class="cal-month" id="calMonth"></span>
+        <button class="btn btn--ghost btn--small" type="button" id="nextMonth">→</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+
+      <div id="slotsWrap" style="margin-top:24px" hidden>
+        <div class="card-head">
+          <h2 id="slotsDate"></h2>
+        </div>
+        <div id="slotsBody"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/client.js"></script>
+</body>
+</html>

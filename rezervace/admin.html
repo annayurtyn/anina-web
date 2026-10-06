@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#2D383E" />
+  <title>Správa rezervací · Aninka</title>
+  <link rel="stylesheet" href="assets/app.css" />
+</head>
+<body>
+
+  <!-- PŘIHLÁŠENÍ -->
+  <main class="wrap wrap--narrow" id="authView" hidden>
+    <header class="top">
+      <div class="top-brand">ANIN<span>KA</span></div>
+    </header>
+    <span class="label">— Správa</span>
+    <h1 style="margin-bottom:22px">ADMIN<br/><em>PANEL</em></h1>
+    <div id="authMsg"></div>
+    <form id="pinForm">
+      <div class="field">
+        <label for="pin">PIN</label>
+        <input id="pin" type="password" inputmode="numeric" autocomplete="current-password" required />
+      </div>
+      <button class="btn btn--full" type="submit">Přihlásit</button>
+    </form>
+  </main>
+
+  <!-- PANEL -->
+  <main class="wrap" id="appView" hidden>
+    <header class="top">
+      <div class="top-brand">ANIN<span>KA</span> <span style="color:var(--muted);letter-spacing:0">· správa</span></div>
+      <div class="top-meta">
+        <a href="index.html" style="color:var(--muted)">Klientský pohled</a><br/>
+        <button class="link" type="button" id="logout">Odhlásit</button>
+      </div>
+    </header>
+
+    <div id="appMsg"></div>
+
+    <nav class="tabs">
+      <button class="tab active" type="button" data-tab="calendar">Kalendář</button>
+      <button class="tab" type="button" data-tab="clients">Klienti</button>
+      <button class="tab" type="button" data-tab="settings">Nastavení</button>
+    </nav>
+
+    <!-- KALENDÁŘ -->
+    <section data-panel="calendar">
+      <div class="card">
+        <div class="card-head">
+          <h2>Otevřít časy pro rezervace</h2>
+        </div>
+        <p class="sub" style="margin-bottom:16px">
+          Vyber rozsah dní, dny v týdnu a okno, kdy můžeš trénovat. Klienti si uvnitř okna
+          rezervují tak, aby ti nevznikaly mezery.
+        </p>
+        <div class="row">
+          <div class="field">
+            <label for="avFrom">Od</label>
+            <input id="avFrom" type="date" />
+          </div>
+          <div class="field">
+            <label for="avTo">Do</label>
+            <input id="avTo" type="date" />
+          </div>
+        </div>
+        <div class="field">
+          <label>Dny v týdnu</label>
+          <div class="inline" id="avDows"></div>
+        </div>
+        <div class="row">
+          <div class="field">
+            <label for="avStart">Začátek okna</label>
+            <input id="avStart" type="time" value="08:00" step="1800" />
+          </div>
+          <div class="field">
+            <label for="avEnd">Konec okna</label>
+            <input id="avEnd" type="time" value="20:00" step="1800" />
+          </div>
+        </div>
+        <button class="btn" type="button" id="avAdd">Otevřít termíny</button>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h2>Přehled</h2>
+          <div class="inline">
+            <button class="btn btn--ghost btn--small" type="button" id="calPrev">←</button>
+            <span id="calRange" class="list-sub"></span>
+            <button class="btn btn--ghost btn--small" type="button" id="calNext">→</button>
+          </div>
+        </div>
+        <div id="calBody"></div>
+      </div>
+    </section>
+
+    <!-- KLIENTI -->
+    <section data-panel="clients" hidden>
+      <div class="card">
+        <div class="card-head">
+          <h2>Klienti</h2>
+          <span class="list-sub" id="clientCount"></span>
+        </div>
+        <div id="clientList"></div>
+      </div>
+    </section>
+
+    <!-- NASTAVENÍ -->
+    <section data-panel="settings" hidden>
+      <div class="card">
+        <div class="card-head">
+          <h2>Google Kalendář</h2>
+          <span id="gcalChip"></span>
+        </div>
+        <p class="sub" style="margin-bottom:16px">
+          Po propojení se každý trénink sám zapíše do tvého kalendáře a klientovi
+          přijde pozvánka na e-mail.
+        </p>
+        <div id="gcalBody"></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h2>Pojistka proti prázdnému dni</h2>
+        </div>
+        <p class="sub" style="margin-bottom:16px">
+          Takhle dlouho před začátkem okna se uvolní všechny časy, i když by vznikla mezera.
+          Blížící se termín je lepší obsadit než nechat prázdný. Nula pojistku vypne.
+        </p>
+        <div class="inline">
+          <input id="valveHours" type="number" min="0" max="336" style="max-width:120px" />
+          <span class="list-sub">hodin předem</span>
+          <button class="btn btn--small" type="button" id="valveSave">Uložit</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/admin.js"></script>
+</body>
+</html>
