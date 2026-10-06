@@ -70,17 +70,24 @@ Pak stačí zadat telefon. Prohlížeč si přihlášení pamatuje natrvalo.
    | `SUPABASE_URL` | z kroku 1 |
    | `SUPABASE_SERVICE_KEY` | z kroku 1 |
    | `ADMIN_PIN` | PIN, který si zvolí Anina |
-   | `PUBLIC_URL` | `https://rezervace.<doména>` |
+   | `PUBLIC_URL` | adresa z kroku 2, např. `https://aninka-rezervace.vercel.app` |
    | `GOOGLE_CLIENT_ID` | z kroku 4 |
    | `GOOGLE_CLIENT_SECRET` | z kroku 4 |
 
-4. **Settings → Domains** → přidat `rezervace.<doména>` a nastavit CNAME u registrátora.
+4. Vercel přidělí adresu typu `aninka-rezervace.vercel.app`. Tu doplň do `PUBLIC_URL`
+   a použij ji všude níž.
 
 Bez vyplněných `GOOGLE_*` systém funguje normálně, jen se nic nezapisuje do kalendáře.
 
+> Vlastní doména zatím není. Hlavní web běží na GitHub Pages
+> (`annayurtyn.github.io/anina-web/`), které serverovou část spustit neumí —
+> proto rezervace běží odděleně na Vercelu. Až někdy doména bude, stačí ji
+> přidat v *Settings → Domains* a přepsat `PUBLIC_URL` a redirect URI u Googlu.
+
 ### 3. Odkaz z hlavního webu
 
-Až bude subdoména naživo, přidat do menu položku *Rezervace*.
+Hlavní web je samostatný projekt na GitHub Pages. Do menu v `index.html`
+přidat položku *Rezervace* odkazující na adresu z kroku 2.
 
 ### 4. Google Kalendář
 
@@ -91,8 +98,9 @@ Až bude subdoména naživo, přidat do menu položku *Rezervace*.
 4. **Credentials → Create Credentials → OAuth client ID** → *Web application*.
    Do **Authorized redirect URIs** vložit přesně:
    ```
-   https://rezervace.<doména>/api?gcal=callback
+   https://aninka-rezervace.vercel.app/api?gcal=callback
    ```
+   (přesně tu adresu, kterou přidělil Vercel)
 5. Vzniklé *Client ID* a *Client secret* doplnit na Vercel.
 6. Anina otevře `/admin.html` → **Nastavení** → **Propojit Google Kalendář**
    a potvrdí přístup pod svým účtem.
@@ -104,9 +112,9 @@ dorazí pozvánka na e-mail — Google ji rozešle sám, žádná další služb
 
 ## První kroky Aniny
 
-1. Otevřít `rezervace.<doména>/admin.html`, zadat PIN.
+1. Otevřít `<adresa>/admin.html`, zadat PIN.
 2. **Kalendář** → vybrat rozsah dní, dny v týdnu a okno → *Otevřít termíny*.
-3. Rozeslat klientům odkaz `rezervace.<doména>`, ať se zaregistrují.
+3. Rozeslat klientům odkaz `<adresa>`, ať se zaregistrují.
 4. **Klienti** → každému přiřadit balíček.
 
 Klienti bez balíčku se zaregistrují a uvidí kalendář, ale rezervovat nemohou,
