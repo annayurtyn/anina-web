@@ -37,6 +37,9 @@ const escapeHtml = (s) =>
   String(s).replace(/[&<>"']/g, (c) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+// Čeština skloňuje jinak pro 1, pro 2–4 a pro zbytek včetně nuly.
+const plural = (n, one, few, many) => (n === 1 ? one : n >= 2 && n <= 4 ? few : many);
+
 /* ---------- datum ---------- */
 
 const iso = (d) => d.toISOString().slice(0, 10);
@@ -117,7 +120,7 @@ function renderPackage() {
     $('pkgBody').innerHTML = `
       <div class="pkg">
         <span class="pkg-num">${pkg.remaining}</span>
-        <span class="pkg-txt">${pkg.remaining === 1 ? 'zbývající trénink' : 'zbývající tréninky'} z ${pkg.total}</span>
+        <span class="pkg-txt">${plural(pkg.remaining, 'zbývající trénink', 'zbývající tréninky', 'zbývajících tréninků')} z ${pkg.total}</span>
       </div>`;
     return;
   }
@@ -127,7 +130,7 @@ function renderPackage() {
     <div class="pkg">
       <span class="pkg-num">${left}</span>
       <span class="pkg-txt">
-        ${left === 1 ? 'volný trénink' : 'volné tréninky'} tenhle týden
+        ${plural(left, 'volný trénink', 'volné tréninky', 'volných tréninků')} tenhle týden
         <br/>balíček ${pkg.weeklyLimit}× týdně${pkg.validTo ? ` · platí do ${prettyDate(pkg.validTo)}` : ''}
       </span>
     </div>`;

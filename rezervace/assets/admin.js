@@ -33,6 +33,9 @@ const escapeHtml = (s) =>
   String(s ?? '').replace(/[&<>"']/g, (c) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+// Čeština skloňuje jinak pro 1, pro 2–4 a pro zbytek včetně nuly.
+const plural = (n, one, few, many) => (n === 1 ? one : n >= 2 && n <= 4 ? few : many);
+
 /* ---------- datum ---------- */
 
 const iso = (d) => d.toISOString().slice(0, 10);
@@ -132,7 +135,7 @@ $('avAdd').onclick = async () => {
   $('avAdd').disabled = true;
   try {
     const { added } = await call('admin_availability_add', { days, start, end });
-    notify('appMsg', `Otevřeno ${added} ${added === 1 ? 'den' : added < 5 ? 'dny' : 'dní'}.`, 'ok');
+    notify('appMsg', `Otevřeno ${added} ${plural(added, 'den', 'dny', 'dní')}.`, 'ok');
     await loadCalendar();
   } catch (err) {
     notify('appMsg', err.message);
@@ -169,7 +172,7 @@ async function loadCalendar() {
           <div class="dayblock-head">
             <span class="dayblock-date">${prettyDate(day)}</span>
             <span class="list-sub">${dayBookings.length
-              ? `${dayBookings.length} ${dayBookings.length === 1 ? 'trénink' : dayBookings.length < 5 ? 'tréninky' : 'tréninků'}`
+              ? `${dayBookings.length} ${plural(dayBookings.length, 'trénink', 'tréninky', 'tréninků')}`
               : 'zatím prázdné'}</span>
           </div>
           <div class="inline" style="margin-bottom:10px">
@@ -287,7 +290,7 @@ async function loadClients({ silent = false } = {}) {
     state.clients = clients;
     if (silent) return;
 
-    $('clientCount').textContent = `${clients.length} ${clients.length === 1 ? 'klient' : clients.length < 5 ? 'klienti' : 'klientů'}`;
+    $('clientCount').textContent = `${clients.length} ${plural(clients.length, 'klient', 'klienti', 'klientů')}`;
     $('clientList').innerHTML = clients.length
       ? clients.map(renderClient).join('')
       : '<div class="empty">Zatím se nikdo nezaregistroval.</div>';
